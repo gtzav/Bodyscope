@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bodyscope</title>
+<meta name="description" content="Bodyscope è un'app Android gratuita che bilancia ciò che mangi con l'attività che fai. Conta i passi, registra camminate e corse, annota i pasti e tiene tutti i tuoi dati sul telefono.">
+<meta property="og:title" content="Bodyscope">
+<meta property="og:description" content="Bilancia ciò che mangi con quanto ti muovi. Un'app Android che tiene i tuoi dati sul telefono.">
+<meta property="og:image" content="../bodyscope-icon.png?v=2">
+<link rel="canonical" href="https://gtzav.github.io/Bodyscope/it/">
+<link rel="alternate" hreflang="en" href="https://gtzav.github.io/Bodyscope/">
+<link rel="alternate" hreflang="ar" href="https://gtzav.github.io/Bodyscope/ar/">
+<link rel="alternate" hreflang="bg" href="https://gtzav.github.io/Bodyscope/bg/">
+<link rel="alternate" hreflang="zh" href="https://gtzav.github.io/Bodyscope/zh/">
+<link rel="alternate" hreflang="nl" href="https://gtzav.github.io/Bodyscope/nl/">
+<link rel="alternate" hreflang="fi" href="https://gtzav.github.io/Bodyscope/fi/">
+<link rel="alternate" hreflang="fr" href="https://gtzav.github.io/Bodyscope/fr/">
+<link rel="alternate" hreflang="de" href="https://gtzav.github.io/Bodyscope/de/">
+<link rel="alternate" hreflang="el" href="https://gtzav.github.io/Bodyscope/el/">
+<link rel="alternate" hreflang="hu" href="https://gtzav.github.io/Bodyscope/hu/">
+<link rel="alternate" hreflang="it" href="https://gtzav.github.io/Bodyscope/it/">
+<link rel="alternate" hreflang="ja" href="https://gtzav.github.io/Bodyscope/ja/">
+<link rel="alternate" hreflang="nb" href="https://gtzav.github.io/Bodyscope/nb/">
+<link rel="alternate" hreflang="ro" href="https://gtzav.github.io/Bodyscope/ro/">
+<link rel="alternate" hreflang="ru" href="https://gtzav.github.io/Bodyscope/ru/">
+<link rel="alternate" hreflang="sr" href="https://gtzav.github.io/Bodyscope/sr/">
+<link rel="alternate" hreflang="es" href="https://gtzav.github.io/Bodyscope/es/">
+<link rel="alternate" hreflang="sv" href="https://gtzav.github.io/Bodyscope/sv/">
+<link rel="alternate" hreflang="yi" href="https://gtzav.github.io/Bodyscope/yi/">
+<link rel="alternate" hreflang="x-default" href="https://gtzav.github.io/Bodyscope/">
+
+<link rel="icon" type="image/png" href="../bodyscope-icon.png?v=2">
+<!-- Self-contained on purpose: no web fonts, scripts or trackers,
+     in keeping with the app's privacy promise. -->
+<style>
+  :root {
+    --bg: #f6fafa;
+    --surface: #ffffff;
+    --surface-2: #eef6f6;
+    --text: #12262b;
+    --muted: #4f6569;
+    --line: #d7e6e7;
+    --teal: #0f9a9c;
+    --teal-strong: #0b7c7e;
+    --cyan: #19d3d8;
+    --violet: #6b2fd0;
+    --violet-soft: #ece4fb;
+    --in: #e2732d;
+    --out: #0f9a9c;
+    --shadow: 0 1px 2px rgba(18,38,43,.06), 0 8px 28px rgba(18,38,43,.08);
+    --radius: 18px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1719;
+      --surface: #142225;
+      --surface-2: #192c30;
+      --text: #e5f1f2;
+      --muted: #9db4b7;
+      --line: #25393d;
+      --teal: #2cc3c5;
+      --teal-strong: #4fd6d8;
+      --cyan: #3ce0e4;
+      --violet: #a77cf2;
+      --violet-soft: #2a2140;
+      --in: #f0904f;
+      --out: #2cc3c5;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1719; --surface: #142225; --surface-2: #192c30;
+    --text: #e5f1f2; --muted: #9db4b7; --line: #25393d;
+    --teal: #2cc3c5; --teal-strong: #4fd6d8; --cyan: #3ce0e4;
+    --violet: #a77cf2; --violet-soft: #2a2140;
+    --in: #f0904f; --out: #2cc3c5;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans",
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal-strong); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 28px; } }
+
+  /* Masthead: big logo + name across the page width */
+  .masthead { padding: 28px 0 0.42em; font-size: clamp(44px, 13.6vw, 158px); }
+  .masthead .brand-xl {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.18em; text-decoration: none; color: var(--text);
+    font-weight: 800; letter-spacing: -0.035em; line-height: 1;
+    /* name + logo fill the content width; ~160px tall on a laptop */
+    font-size: inherit;
+  }
+  .masthead .brand-xl img {
+    width: 1.05em; height: 1.05em; flex: none; border-radius: 0.2em;
+    filter: drop-shadow(0 0.04em 0.08em rgba(0,0,0,.18));
+  }
+
+  /* Sticky bar under the masthead: section links + Download */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: center;
+               gap: 16px; min-height: 58px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none;
+           color: var(--text); font-weight: 700; font-size: 19px; }
+  .brand img { width: 34px; height: 34px; }
+  nav.links { display: flex; gap: 26px; }
+  nav.links a { color: var(--muted); text-decoration: none; font-size: 16px; }
+  nav.links a:hover { color: var(--text); }
+  .top .cta-sm { white-space: nowrap; }
+  /* medium screens: fewer section links so the bar stays on one line */
+  @media (max-width: 1000px) { nav.links a[href="#how"] { display: none; } }
+  @media (max-width: 860px) { nav.links a[href="#privacy"] { display: none; } }
+  /* phones: just Download and the language picker (sections follow below) */
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+    .top .cta-sm { margin-inline-start: 0; }
+  }
+  .lang-pick { font: inherit; font-size: 14px; color: var(--text); background: var(--surface);
+               border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; max-width: 9.5em; }
+  .top .cta-sm { margin-inline-start: 10px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px; border-radius: 999px; font-weight: 650;
+    text-decoration: none; font-size: 16px; border: 1px solid transparent;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-strong); }
+  :root[data-theme="dark"] .btn-primary { color: #06292a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn-primary { color: #06292a; }
+  }
+  .btn-ghost { border-color: var(--line); color: var(--text); background: var(--surface); }
+  .btn-sm { padding: 8px 16px; font-size: 14px; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+
+  /* Hero */
+  .hero { padding: 56px 0 40px; }
+  .hero .wrap { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 900px) {
+    .hero { padding: 84px 0 64px; }
+    .hero .wrap { grid-template-columns: 1.1fr .9fr; gap: 56px; }
+  }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 650; letter-spacing: .06em;
+             text-transform: uppercase; color: var(--violet); background: var(--violet-soft);
+             padding: 5px 12px; border-radius: 999px; }
+  h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.06; letter-spacing: -.025em;
+       margin: 18px 0 18px; font-weight: 800; }
+  h1 .accent { background: linear-gradient(90deg, var(--teal), var(--violet));
+               -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
+
+  /* Day card (illustration) */
+  .day {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
+    box-shadow: var(--shadow); padding: 22px; max-width: 420px; width: 100%;
+    justify-self: center; position: relative;
+  }
+  .day::before {
+    content: ""; position: absolute; inset: -40px -30px auto auto; width: 220px; height: 220px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 28%, transparent), transparent 70%);
+    z-index: -1;
+  }
+  .day-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .day-head b { font-size: 17px; }
+  .day-head span { font-size: 13px; color: var(--muted); }
+  .ring-row { display: flex; align-items: center; gap: 18px; margin: 18px 0 16px; }
+  .ring { width: 132px; height: 132px; flex: none; }
+  .ring text { fill: var(--text); }
+  .ring .sub { fill: var(--muted); }
+  .legend { display: grid; gap: 10px; font-size: 14px; flex: 1; min-width: 0; }
+  .legend div { display: flex; align-items: center; gap: 8px; }
+  .legend i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .legend b { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
+  .rows { border-top: 1px solid var(--line); padding-top: 10px; display: grid; }
+  .rows div { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14.5px;
+              color: var(--muted); }
+  .rows div b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .caption { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  section.alt { background: var(--surface-2); border-block: 1px solid var(--line); }
+  h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -.02em; line-height: 1.15; margin: 0 0 12px; }
+  .section-lead { color: var(--muted); max-width: 40em; margin: 0 0 36px; font-size: 18px; }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+          padding: 22px; }
+  .card h3 { margin: 12px 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+          background: color-mix(in srgb, var(--teal) 14%, transparent); color: var(--teal-strong); }
+  .icon.v { background: var(--violet-soft); color: var(--violet); }
+  .icon svg { width: 22px; height: 22px; }
+
+  /* Steps */
+  .steps { display: grid; gap: 16px; counter-reset: s; }
+  @media (min-width: 820px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { padding: 22px; border-radius: var(--radius); background: var(--surface);
+          border: 1px solid var(--line); counter-increment: s; }
+  .step::before { content: counter(s); display: grid; place-items: center; width: 34px; height: 34px;
+                  border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; }
+  .step h3 { margin: 14px 0 6px; font-size: 18px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  /* Privacy */
+  .privacy { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 860px) { .privacy { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .checks li { display: flex; gap: 12px; align-items: flex-start; background: var(--surface);
+               border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .checks svg { width: 22px; height: 22px; flex: none; color: var(--teal); margin-top: 2px; }
+  .checks b { display: block; }
+  .checks span { color: var(--muted); font-size: 15px; }
+
+  /* Languages */
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .langs a { color: var(--text); text-decoration: none; }
+  .langs a:hover { border-color: var(--teal); }
+  .langs a[aria-current] { border-color: var(--teal); background: var(--surface-2); font-weight: 650; }
+  .langs a { background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+                padding: 6px 14px; font-size: 15px; }
+
+  /* FAQ */
+  .faq { display: grid; gap: 10px; max-width: 780px; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+            padding: 4px 18px; }
+  summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
+            display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 14px; color: var(--muted); }
+
+  /* Download */
+  .download { text-align: center; }
+  .download .box { background: linear-gradient(135deg, var(--teal), var(--violet));
+                   color: #fff; border-radius: 28px; padding: 48px 22px; }
+  .download h2 { color: #fff; }
+  .download p { color: rgba(255,255,255,.88); max-width: 36em; margin: 0 auto 26px; }
+  .download .btn { background: #fff; color: #0b4f50; }
+  .download .meta { font-size: 14px; margin: 18px auto 0; color: rgba(255,255,255,.8); }
+
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+  footer .brand { font-size: 16px; }
+  footer .brand img { width: 26px; height: 26px; }
+  footer nav { display: flex; gap: 18px; flex-wrap: wrap; margin-inline-start: auto; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <a class="brand-xl" href="#"><img src="../bodyscope-icon.png?v=2" alt="" width="256" height="256">Bodyscope</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="links" aria-label="Sezioni">
+      <a href="#features">Funzioni</a>
+      <a href="#how">Come funziona</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">Domande</a>
+    </nav>
+    <a class="btn btn-primary btn-sm cta-sm" href="#download">Scarica</a>
+    <select class="lang-pick" aria-label="Lingua" onchange="bsLang(this.value)"><option value="en">English</option><option value="ar">العربية</option><option value="bg">Български</option><option value="zh">中文 (简体)</option><option value="nl">Nederlands</option><option value="fi">Suomi</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="hu">Magyar</option><option value="it" selected>Italiano</option><option value="ja">日本語</option><option value="nb">Norsk bokmål</option><option value="ro">Română</option><option value="ru">Русский</option><option value="sr">Српски</option><option value="es">Español</option><option value="sv">Svenska</option><option value="yi">ייִדיש</option></select>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-top:56px">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">App Android gratuita</span>
+        <h1>Bilancia ciò che mangi con <span class="accent">quanto ti muovi</span>.</h1>
+        <p class="lead">Bodyscope conta i tuoi passi, registra camminate e corse, annota i tuoi pasti e mostra il bilancio energetico di ogni giorno: ciò che hai assunto rispetto a ciò che hai bruciato. Tutto resta sul tuo telefono.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Scarica per Android
+          </a>
+          <a class="btn btn-ghost" href="#features">Scopri cosa fa</a>
+        </div>
+        <p class="fine">Android 6.0 o successivo · Nessun account · Niente pubblicità · Nessun tracciamento</p>
+      </div>
+
+      <div class="day" role="img" aria-label="Esempio di una giornata in Bodyscope: 1.850 kcal mangiate, 2.140 kcal bruciate, 290 kcal sotto il bilancio">
+        <div class="day-head"><b>Oggi</b><span>giornata di esempio</span></div>
+        <div class="ring-row">
+          <svg class="ring" viewBox="0 0 132 132" aria-hidden="true">
+            <circle cx="66" cy="66" r="54" fill="none" stroke="var(--line)" stroke-width="12"/>
+            <!-- burned: full ring; eaten: 1850/2140 = 86% -->
+            <circle cx="66" cy="66" r="54" fill="none" stroke="var(--out)" stroke-width="12"
+                    stroke-dasharray="339.3" stroke-dashoffset="0" transform="rotate(-90 66 66)" opacity=".28"/>
+            <circle cx="66" cy="66" r="54" fill="none" stroke="var(--in)" stroke-width="12" stroke-linecap="round"
+                    stroke-dasharray="339.3" stroke-dashoffset="46.6" transform="rotate(-90 66 66)"/>
+            <text x="66" y="64" text-anchor="middle" font-size="24" font-weight="700">−290</text>
+            <text class="sub" x="66" y="84" text-anchor="middle" font-size="12">bilancio kcal</text>
+          </svg>
+          <div class="legend">
+            <div><i style="background:var(--in)"></i>Mangiate<b>1.850</b></div>
+            <div><i style="background:var(--out);opacity:.5"></i>Bruciate<b>2.140</b></div>
+            <div><i style="background:var(--violet)"></i>Passi<b>8.432</b></div>
+          </div>
+        </div>
+        <div class="rows">
+          <div>Colazione · Pranzo · Cena · Spuntino<b>4 pasti</b></div>
+          <div>Corsa mattutina<b>5,2 km · 31 min</b></div>
+          <div>Bicicletta (altra attività)<b>45 min</b></div>
+          <div>Corpo a riposo (basale)<b>1.520 kcal</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="alt">
+    <div class="wrap">
+      <h2>Tutto per una giornata equilibrata</h2>
+      <p class="section-lead">Il cibo da una parte, il movimento dall'altra e il tuo profilo al centro, così i numeri sono fatti per te e non per una persona media.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
+          <h3>Pasti e alimenti</h3>
+          <p>Componi i tuoi pasti da un elenco iniziale di circa 900 alimenti, oppure cerca nei database USDA e Open Food Facts. Calorie e nutrienti vengono sommati per te.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
+          <h3>Contapassi</h3>
+          <p>Conta i tuoi passi in background tutto il giorno, con un obiettivo giornaliero e la tua lunghezza del passo per camminata e corsa.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg></div>
+          <h3>Camminate e corse</h3>
+          <p>Registra una camminata o una corsa con distanza, tempo e passo, guarda il percorso su una mappa OpenStreetMap e ricevi aggiornamenti vocali mentre procedi.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h5l3 8"/><path d="M10 9 8 6H6"/></svg></div>
+          <h3>Altre attività</h3>
+          <p>Annota bicicletta, nuoto, pesi, yoga, giardinaggio e molto altro. L'energia di ciascuna è calcolata dal tuo peso e dall'intensità dell'attività.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m5 7-3 7a3.5 3.5 0 0 0 6 0z"/><path d="m19 7-3 7a3.5 3.5 0 0 0 6 0z"/></svg></div>
+          <h3>Il tuo bilancio giornaliero</h3>
+          <p>Calorie in entrata contro calorie in uscita, dal fabbisogno basale, passi, corse e attività. Imposta un peso obiettivo e scopri quante calorie al giorno ti ci portano.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <h3>Grafici e cronologia</h3>
+          <p>Guarda indietro su giorni e settimane: pasti al giorno, nutrienti in un periodo e la cronologia di camminate e corse.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h4"/></svg></div>
+          <h3>Calcolatori</h3>
+          <p>Un calcolatore di IMC e uno di calorie che usano età, sesso, altezza, peso e quanto sei attivo.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a8 8 0 1 0 2.3-5.7"/><path d="M4 4v5h5"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>Backup sotto il tuo controllo</h3>
+          <p>Salva i tuoi dati in una cartella a tua scelta, a mano o in automatico ogni giorno, ogni 3 giorni o ogni settimana, e ripristinali su un nuovo telefono.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <h3>19 lingue, 6 temi</h3>
+          <p>Usa Bodyscope nella tua lingua e scegli i colori che preferisci, dai toni chiari a un tema scuro “chiaro di luna”.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>Come funziona</h2>
+      <p class="section-lead">Tre cose da impostare, poi Bodyscope tiene i numeri della giornata per te.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>Parlagli di te</h3>
+          <p>Inserisci data di nascita, sesso, altezza e peso. Bodyscope calcola quanta energia serve al tuo corpo a riposo.</p>
+        </div>
+        <div class="step">
+          <h3>Annota cosa mangi</h3>
+          <p>Aggiungi ogni pasto dall'elenco degli alimenti, oppure cerca in un database alimentare ciò che manca.</p>
+        </div>
+        <div class="step">
+          <h3>Muoviti e basta</h3>
+          <p>Attiva una volta il conteggio dei passi e i tuoi passi vengono contati tutto il giorno. Avvia una camminata o una corsa, o annota un'altra attività, e guarda il bilancio della giornata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="alt">
+    <div class="wrap privacy">
+      <div>
+        <h2>I tuoi dati restano sul telefono</h2>
+        <p class="section-lead" style="margin-bottom:0">Bodyscope funziona sul tuo dispositivo. Nessun account da creare e niente di nascosto che invii profilo, pasti o attività a un server.</p>
+      </div>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>Nessun account, nessun accesso</b><span>Installala e inizia. Niente da registrare.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>Niente pubblicità, nessun tracciamento</b><span>Nessun codice pubblicitario o di analisi nell'app.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>Esce dal telefono solo ciò che cerchi</b><span>Quando cerchi in un database alimentare online, a quel servizio vengono inviate solo le parole cercate.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>I backup vanno dove scegli tu</b><span>Una cartella sul telefono, una scheda SD o la tua cartella cloud.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Nella tua lingua</h2>
+      <p class="section-lead">Bodyscope parla 19 lingue. Hai trovato una parola sbagliata? Aiutaci a correggerla, vedi le domande qui sotto.</p>
+      <div class="langs">
+        <a href="../" lang="en" hreflang="en" data-lang="en">English</a>
+        <a href="../ar/" lang="ar" hreflang="ar" data-lang="ar">العربية</a>
+        <a href="../bg/" lang="bg" hreflang="bg" data-lang="bg">Български</a>
+        <a href="../zh/" lang="zh" hreflang="zh" data-lang="zh">中文 (简体)</a>
+        <a href="../nl/" lang="nl" hreflang="nl" data-lang="nl">Nederlands</a>
+        <a href="../fi/" lang="fi" hreflang="fi" data-lang="fi">Suomi</a>
+        <a href="../fr/" lang="fr" hreflang="fr" data-lang="fr">Français</a>
+        <a href="../de/" lang="de" hreflang="de" data-lang="de">Deutsch</a>
+        <a href="../el/" lang="el" hreflang="el" data-lang="el">Ελληνικά</a>
+        <a href="../hu/" lang="hu" hreflang="hu" data-lang="hu">Magyar</a>
+        <a href="../it/" lang="it" hreflang="it" data-lang="it" aria-current="page">Italiano</a>
+        <a href="../ja/" lang="ja" hreflang="ja" data-lang="ja">日本語</a>
+        <a href="../nb/" lang="nb" hreflang="nb" data-lang="nb">Norsk bokmål</a>
+        <a href="../ro/" lang="ro" hreflang="ro" data-lang="ro">Română</a>
+        <a href="../ru/" lang="ru" hreflang="ru" data-lang="ru">Русский</a>
+        <a href="../sr/" lang="sr" hreflang="sr" data-lang="sr">Српски</a>
+        <a href="../es/" lang="es" hreflang="es" data-lang="es">Español</a>
+        <a href="../sv/" lang="sv" hreflang="sv" data-lang="sv">Svenska</a>
+        <a href="../yi/" lang="yi" hreflang="yi" data-lang="yi">ייִדיש</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <h2>Domande</h2>
+      <p class="section-lead">Quelle che sentiamo più spesso.</p>
+      <div class="faq">
+        <details>
+          <summary>Bodyscope costa qualcosa?</summary>
+          <p>No. Bodyscope è gratuita, senza pubblicità e senza acquisti in-app.</p>
+        </details>
+        <details>
+          <summary>Su quali telefoni funziona?</summary>
+          <p>Su qualsiasi telefono con Android 6.0 (Marshmallow) o successivo.</p>
+        </details>
+        <details>
+          <summary>Come la installo da questo sito?</summary>
+          <p>Scarica il file APK con il pulsante qui sotto e aprilo sul telefono. La prima volta Android ti chiederà di consentire l'installazione di app dal browser o dal gestore file. Bodyscope controlla da sola le nuove versioni (Informazioni → Controlla gli aggiornamenti).</p>
+        </details>
+        <details>
+          <summary>Come sposto i miei dati su un nuovo telefono?</summary>
+          <p>Usa <em>Dati di backup</em> nel menu (o attiva il backup automatico nelle Impostazioni), copia i file di backup sul nuovo telefono e lì usa <em>Ripristina dati</em>.</p>
+        </details>
+        <details>
+          <summary>Alcune parole sono in inglese e non nella mia lingua. Perché?</summary>
+          <p>La tua lingua potrebbe non essere ancora tradotta del tutto. La maggior parte delle traduzioni è stata fatta prima in automatico, quindi alcune potrebbero essere sbagliate. Il tuo aiuto è prezioso: scrivici.</p>
+        </details>
+        <details>
+          <summary>Posso suggerire una funzione o segnalare un problema?</summary>
+          <p>Certo. Scrivi a <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a>, oppure usa <em>Informazioni → E-mail del team di sviluppo</em> nell'app. Leggiamo ogni messaggio.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="download">
+    <div class="wrap">
+      <div class="box">
+        <h2>Scarica Bodyscope</h2>
+        <p>Gratis per Android. Scaricala, apri il file sul telefono ed è fatta.</p>
+        <!-- Always the APK of the latest GitHub release (attach it as bodyscope-release.apk). -->
+        <a class="btn" href="https://github.com/gtzav/Bodyscope/releases/latest/download/bodyscope-release.apk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Scarica l'APK
+        </a>
+        <p class="meta">Android 6.0+ · Nessun account</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="../bodyscope-icon.png?v=2" alt="" width="26" height="26">Bodyscope</a>
+    <span>© <span id="yr">2026</span> Yannis Tzavellas · Hyperlog</span>
+    <nav aria-label="Piè di pagina">
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">Domande</a>
+      <a href="mailto:bodyscope.team@gmail.com">Contatti</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+<script>
+function bsLang(c) {
+  try { localStorage.setItem("bs-lang", c); } catch (e) {}
+  location.href = "../" + (c === "en" ? "" : c + "/") + location.hash;
+}
+document.querySelectorAll(".langs a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    try { localStorage.setItem("bs-lang", a.dataset.lang); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>

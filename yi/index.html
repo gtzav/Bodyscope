@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="yi" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bodyscope</title>
+<meta name="description" content="Bodyscope איז אַ פֿרײַע Android־אַפּליקאַציע װאָס באַלאַנסירט דאָס עסן מיט דער באַװעגונג. זי ציילט טריט, רעקאָרדירט שפּאַצירן און לױפֿן, פֿאַרשרײַבט מאָלצײַטן און האַלט אַלע אײַערע דאַטן אױפֿן טעלעפֿאָן.">
+<meta property="og:title" content="Bodyscope">
+<meta property="og:description" content="באַלאַנסירט װאָס איר עסט מיט װי איר באַװעגט זיך. אַן Android־אַפּליקאַציע װאָס האַלט אײַערע דאַטן אױפֿן טעלעפֿאָן.">
+<meta property="og:image" content="../bodyscope-icon.png?v=2">
+<link rel="canonical" href="https://gtzav.github.io/Bodyscope/yi/">
+<link rel="alternate" hreflang="en" href="https://gtzav.github.io/Bodyscope/">
+<link rel="alternate" hreflang="ar" href="https://gtzav.github.io/Bodyscope/ar/">
+<link rel="alternate" hreflang="bg" href="https://gtzav.github.io/Bodyscope/bg/">
+<link rel="alternate" hreflang="zh" href="https://gtzav.github.io/Bodyscope/zh/">
+<link rel="alternate" hreflang="nl" href="https://gtzav.github.io/Bodyscope/nl/">
+<link rel="alternate" hreflang="fi" href="https://gtzav.github.io/Bodyscope/fi/">
+<link rel="alternate" hreflang="fr" href="https://gtzav.github.io/Bodyscope/fr/">
+<link rel="alternate" hreflang="de" href="https://gtzav.github.io/Bodyscope/de/">
+<link rel="alternate" hreflang="el" href="https://gtzav.github.io/Bodyscope/el/">
+<link rel="alternate" hreflang="hu" href="https://gtzav.github.io/Bodyscope/hu/">
+<link rel="alternate" hreflang="it" href="https://gtzav.github.io/Bodyscope/it/">
+<link rel="alternate" hreflang="ja" href="https://gtzav.github.io/Bodyscope/ja/">
+<link rel="alternate" hreflang="nb" href="https://gtzav.github.io/Bodyscope/nb/">
+<link rel="alternate" hreflang="ro" href="https://gtzav.github.io/Bodyscope/ro/">
+<link rel="alternate" hreflang="ru" href="https://gtzav.github.io/Bodyscope/ru/">
+<link rel="alternate" hreflang="sr" href="https://gtzav.github.io/Bodyscope/sr/">
+<link rel="alternate" hreflang="es" href="https://gtzav.github.io/Bodyscope/es/">
+<link rel="alternate" hreflang="sv" href="https://gtzav.github.io/Bodyscope/sv/">
+<link rel="alternate" hreflang="yi" href="https://gtzav.github.io/Bodyscope/yi/">
+<link rel="alternate" hreflang="x-default" href="https://gtzav.github.io/Bodyscope/">
+
+<link rel="icon" type="image/png" href="../bodyscope-icon.png?v=2">
+<!-- Self-contained on purpose: no web fonts, scripts or trackers,
+     in keeping with the app's privacy promise. -->
+<style>
+  :root {
+    --bg: #f6fafa;
+    --surface: #ffffff;
+    --surface-2: #eef6f6;
+    --text: #12262b;
+    --muted: #4f6569;
+    --line: #d7e6e7;
+    --teal: #0f9a9c;
+    --teal-strong: #0b7c7e;
+    --cyan: #19d3d8;
+    --violet: #6b2fd0;
+    --violet-soft: #ece4fb;
+    --in: #e2732d;
+    --out: #0f9a9c;
+    --shadow: 0 1px 2px rgba(18,38,43,.06), 0 8px 28px rgba(18,38,43,.08);
+    --radius: 18px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1719;
+      --surface: #142225;
+      --surface-2: #192c30;
+      --text: #e5f1f2;
+      --muted: #9db4b7;
+      --line: #25393d;
+      --teal: #2cc3c5;
+      --teal-strong: #4fd6d8;
+      --cyan: #3ce0e4;
+      --violet: #a77cf2;
+      --violet-soft: #2a2140;
+      --in: #f0904f;
+      --out: #2cc3c5;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1719; --surface: #142225; --surface-2: #192c30;
+    --text: #e5f1f2; --muted: #9db4b7; --line: #25393d;
+    --teal: #2cc3c5; --teal-strong: #4fd6d8; --cyan: #3ce0e4;
+    --violet: #a77cf2; --violet-soft: #2a2140;
+    --in: #f0904f; --out: #2cc3c5;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans",
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal-strong); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 28px; } }
+
+  /* Masthead: big logo + name across the page width */
+  .masthead { padding: 28px 0 0.42em; font-size: clamp(44px, 13.6vw, 158px); }
+  .masthead .brand-xl {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.18em; text-decoration: none; color: var(--text);
+    font-weight: 800; letter-spacing: -0.035em; line-height: 1;
+    /* name + logo fill the content width; ~160px tall on a laptop */
+    font-size: inherit;
+  }
+  .masthead .brand-xl img {
+    width: 1.05em; height: 1.05em; flex: none; border-radius: 0.2em;
+    filter: drop-shadow(0 0.04em 0.08em rgba(0,0,0,.18));
+  }
+
+  /* Sticky bar under the masthead: section links + Download */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: center;
+               gap: 16px; min-height: 58px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none;
+           color: var(--text); font-weight: 700; font-size: 19px; }
+  .brand img { width: 34px; height: 34px; }
+  nav.links { display: flex; gap: 26px; }
+  nav.links a { color: var(--muted); text-decoration: none; font-size: 16px; }
+  nav.links a:hover { color: var(--text); }
+  .top .cta-sm { white-space: nowrap; }
+  /* medium screens: fewer section links so the bar stays on one line */
+  @media (max-width: 1000px) { nav.links a[href="#how"] { display: none; } }
+  @media (max-width: 860px) { nav.links a[href="#privacy"] { display: none; } }
+  /* phones: just Download and the language picker (sections follow below) */
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+    .top .cta-sm { margin-inline-start: 0; }
+  }
+  .lang-pick { font: inherit; font-size: 14px; color: var(--text); background: var(--surface);
+               border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; max-width: 9.5em; }
+  .top .cta-sm { margin-inline-start: 10px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px; border-radius: 999px; font-weight: 650;
+    text-decoration: none; font-size: 16px; border: 1px solid transparent;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-strong); }
+  :root[data-theme="dark"] .btn-primary { color: #06292a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn-primary { color: #06292a; }
+  }
+  .btn-ghost { border-color: var(--line); color: var(--text); background: var(--surface); }
+  .btn-sm { padding: 8px 16px; font-size: 14px; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+
+  /* Hero */
+  .hero { padding: 56px 0 40px; }
+  .hero .wrap { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 900px) {
+    .hero { padding: 84px 0 64px; }
+    .hero .wrap { grid-template-columns: 1.1fr .9fr; gap: 56px; }
+  }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 650; letter-spacing: .06em;
+             text-transform: uppercase; color: var(--violet); background: var(--violet-soft);
+             padding: 5px 12px; border-radius: 999px; }
+  h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.06; letter-spacing: -.025em;
+       margin: 18px 0 18px; font-weight: 800; }
+  h1 .accent { background: linear-gradient(90deg, var(--teal), var(--violet));
+               -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
+
+  /* Day card (illustration) */
+  .day {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
+    box-shadow: var(--shadow); padding: 22px; max-width: 420px; width: 100%;
+    justify-self: center; position: relative;
+  }
+  .day::before {
+    content: ""; position: absolute; inset: -40px -30px auto auto; width: 220px; height: 220px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 28%, transparent), transparent 70%);
+    z-index: -1;
+  }
+  .day-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .day-head b { font-size: 17px; }
+  .day-head span { font-size: 13px; color: var(--muted); }
+  .ring-row { display: flex; align-items: center; gap: 18px; margin: 18px 0 16px; }
+  .ring { width: 132px; height: 132px; flex: none; }
+  .ring text { fill: var(--text); }
+  .ring .sub { fill: var(--muted); }
+  .legend { display: grid; gap: 10px; font-size: 14px; flex: 1; min-width: 0; }
+  .legend div { display: flex; align-items: center; gap: 8px; }
+  .legend i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .legend b { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
+  .rows { border-top: 1px solid var(--line); padding-top: 10px; display: grid; }
+  .rows div { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14.5px;
+              color: var(--muted); }
+  .rows div b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .caption { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  section.alt { background: var(--surface-2); border-block: 1px solid var(--line); }
+  h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -.02em; line-height: 1.15; margin: 0 0 12px; }
+  .section-lead { color: var(--muted); max-width: 40em; margin: 0 0 36px; font-size: 18px; }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+          padding: 22px; }
+  .card h3 { margin: 12px 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+          background: color-mix(in srgb, var(--teal) 14%, transparent); color: var(--teal-strong); }
+  .icon.v { background: var(--violet-soft); color: var(--violet); }
+  .icon svg { width: 22px; height: 22px; }
+
+  /* Steps */
+  .steps { display: grid; gap: 16px; counter-reset: s; }
+  @media (min-width: 820px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { padding: 22px; border-radius: var(--radius); background: var(--surface);
+          border: 1px solid var(--line); counter-increment: s; }
+  .step::before { content: counter(s); display: grid; place-items: center; width: 34px; height: 34px;
+                  border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; }
+  .step h3 { margin: 14px 0 6px; font-size: 18px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  /* Privacy */
+  .privacy { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 860px) { .privacy { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .checks li { display: flex; gap: 12px; align-items: flex-start; background: var(--surface);
+               border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .checks svg { width: 22px; height: 22px; flex: none; color: var(--teal); margin-top: 2px; }
+  .checks b { display: block; }
+  .checks span { color: var(--muted); font-size: 15px; }
+
+  /* Languages */
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .langs a { color: var(--text); text-decoration: none; }
+  .langs a:hover { border-color: var(--teal); }
+  .langs a[aria-current] { border-color: var(--teal); background: var(--surface-2); font-weight: 650; }
+  .langs a { background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+                padding: 6px 14px; font-size: 15px; }
+
+  /* FAQ */
+  .faq { display: grid; gap: 10px; max-width: 780px; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+            padding: 4px 18px; }
+  summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
+            display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 14px; color: var(--muted); }
+
+  /* Download */
+  .download { text-align: center; }
+  .download .box { background: linear-gradient(135deg, var(--teal), var(--violet));
+                   color: #fff; border-radius: 28px; padding: 48px 22px; }
+  .download h2 { color: #fff; }
+  .download p { color: rgba(255,255,255,.88); max-width: 36em; margin: 0 auto 26px; }
+  .download .btn { background: #fff; color: #0b4f50; }
+  .download .meta { font-size: 14px; margin: 18px auto 0; color: rgba(255,255,255,.8); }
+
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+  footer .brand { font-size: 16px; }
+  footer .brand img { width: 26px; height: 26px; }
+  footer nav { display: flex; gap: 18px; flex-wrap: wrap; margin-inline-start: auto; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <a class="brand-xl" href="#"><img src="../bodyscope-icon.png?v=2" alt="" width="256" height="256">Bodyscope</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="links" aria-label="אָפּטײלן">
+      <a href="#features">מעגלעכקײטן</a>
+      <a href="#how">װי עס אַרבעט</a>
+      <a href="#privacy">פּריװאַטקײט</a>
+      <a href="#faq">פֿראַגעס</a>
+    </nav>
+    <a class="btn btn-primary btn-sm cta-sm" href="#download">אַראָפּלאָדן</a>
+    <select class="lang-pick" aria-label="שפּראַך" onchange="bsLang(this.value)"><option value="en">English</option><option value="ar">العربية</option><option value="bg">Български</option><option value="zh">中文 (简体)</option><option value="nl">Nederlands</option><option value="fi">Suomi</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="hu">Magyar</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="nb">Norsk bokmål</option><option value="ro">Română</option><option value="ru">Русский</option><option value="sr">Српски</option><option value="es">Español</option><option value="sv">Svenska</option><option value="yi" selected>ייִדיש</option></select>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-top:56px">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">פֿרײַע Android־אַפּליקאַציע</span>
+        <h1>באַלאַנסירט װאָס איר עסט <span class="accent">מיט װי איר באַװעגט זיך</span>.</h1>
+        <p class="lead">Bodyscope ציילט אײַערע טריט, רעקאָרדירט אײַערע שפּאַצירן און לױפֿן, פֿאַרשרײַבט אײַערע מאָלצײַטן און װײַזט דעם ענערגיע־באַלאַנס פֿון יעדן טאָג: װאָס איר האָט באַקומען קעגן װאָס איר האָט פֿאַרבראַכט. אַלץ בלײַבט אױף אײַער טעלעפֿאָן.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            אַראָפּלאָדן פֿאַר Android
+          </a>
+          <a class="btn btn-ghost" href="#features">זעט װאָס זי טוט</a>
+        </div>
+        <p class="fine">Android 6.0 אָדער נײַער · קײן חשבון · קײן רעקלאַמעס · קײן נאָכשפּירן</p>
+      </div>
+
+      <div class="day" role="img" aria-label="אַ בײַשפּיל־טאָג אין Bodyscope: 1,850 קאַלאָריעס געגעסן, 2,140 פֿאַרבראַכט, 290 אונטער דעם באַלאַנס">
+        <div class="day-head"><b>הײַנט</b><span>בײַשפּיל־טאָג</span></div>
+        <div class="ring-row">
+          <svg class="ring" viewBox="0 0 132 132" aria-hidden="true">
+            <circle cx="66" cy="66" r="54" fill="none" stroke="var(--line)" stroke-width="12"/>
+            <!-- burned: full ring; eaten: 1850/2140 = 86% -->
+            <circle cx="66" cy="66" r="54" fill="none" stroke="var(--out)" stroke-width="12"
+                    stroke-dasharray="339.3" stroke-dashoffset="0" transform="rotate(-90 66 66)" opacity=".28"/>
+            <circle cx="66" cy="66" r="54" fill="none" stroke="var(--in)" stroke-width="12" stroke-linecap="round"
+                    stroke-dasharray="339.3" stroke-dashoffset="46.6" transform="rotate(-90 66 66)"/>
+            <text x="66" y="64" text-anchor="middle" font-size="24" font-weight="700">−290</text>
+            <text class="sub" x="66" y="84" text-anchor="middle" font-size="12">קאַלאָריע־באַלאַנס</text>
+          </svg>
+          <div class="legend">
+            <div><i style="background:var(--in)"></i>געגעסן<b>1,850</b></div>
+            <div><i style="background:var(--out);opacity:.5"></i>פֿאַרבראַכט<b>2,140</b></div>
+            <div><i style="background:var(--violet)"></i>טריט<b>8,432</b></div>
+          </div>
+        </div>
+        <div class="rows">
+          <div>פֿרישטיק · מיטיק · װעטשערע · פֿאַרבײַסן<b>4 מאָלצײַטן</b></div>
+          <div>פֿרימאָרגן־לױף<b>5.2 ק״מ · 31 מינוט</b></div>
+          <div>ראָװער (אַנדער טעטיקײט)<b>45 מינוט</b></div>
+          <div>גוף אין רו (באַזאַל)<b>1,520 קאַלאָריעס</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="alt">
+    <div class="wrap">
+      <h2>אַלץ פֿאַר אַ באַלאַנסירטן טאָג</h2>
+      <p class="section-lead">דאָס עסן אױף אײן זײַט, די באַװעגונג אױף דער אַנדערער, און אײַער אײגענער פּראָפֿיל אין מיטן, כּדי די צאָלן זאָלן פּאַסן פֿאַר אײַך און ניט פֿאַר אַ דורכשניטלעכן מענטש.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
+          <h3>מאָלצײַטן און שפּײַזן</h3>
+          <p>בױט אײַערע מאָלצײַטן פֿון אַן אָנהײב־ליסטע פֿון בערך 900 שפּײַזן, אָדער זוכט אין די דאַטנבאַזעס פֿון USDA און Open Food Facts. די קאַלאָריעס און נערשטאָפֿן װערן צונױפֿגערעכנט פֿאַר אײַך.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
+          <h3>טריט־צײלער</h3>
+          <p>ציילט אײַערע טריט אין הינטערגרונט אַ גאַנצן טאָג, מיט אַ טעגלעכן ציל און אײַער אײגענער טריט־לענג פֿאַר גײן און לױפֿן.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg></div>
+          <h3>שפּאַצירן און לױפֿן</h3>
+          <p>רעקאָרדירט אַ שפּאַציר אָדער אַ לױף מיט דיסטאַנץ, צײַט און טעמפּ, זעט דעם װעג אױף אַן OpenStreetMap־מאַפּע, און באַקומט גערעדטע מעלדונגען אונטערװעגנס.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h5l3 8"/><path d="M10 9 8 6H6"/></svg></div>
+          <h3>אַנדערע טעטיקײטן</h3>
+          <p>פֿאַרשרײַבט ראָװער־פֿאָרן, שװימען, װאָג־טרענירונג, יאָגאַ, גערטנערײַ און נאָך אַ סך. די ענערגיע פֿון יעדער װערט אױסגערעכנט פֿון אײַער װאָג און דער אינטענסיװקײט.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m5 7-3 7a3.5 3.5 0 0 0 6 0z"/><path d="m19 7-3 7a3.5 3.5 0 0 0 6 0z"/></svg></div>
+          <h3>אײַער טעגלעכער באַלאַנס</h3>
+          <p>קאַלאָריעס אַרײַן קעגן קאַלאָריעס אַרױס, פֿון אײַערע באַזיס־באַדערפֿענישן, טריט, לױפֿן און טעטיקײטן. שטעלט אַ ציל־װאָג און זעט װיפֿל קאַלאָריעס אַ טאָג ברענגען אײַך אַהין.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <h3>גראַפֿיקן און געשיכטע</h3>
+          <p>קוקט צוריק אױף טעג און װאָכן: מאָלצײַטן אַ טאָג, נערשטאָפֿן איבער אַ תּקופֿה, און די געשיכטע פֿון אײַערע שפּאַצירן און לױפֿן.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h4"/></svg></div>
+          <h3>רעכנערס</h3>
+          <p>אַ BMI־רעכנער און אַ קאַלאָריע־רעכנער װאָס ניצן אײַער עלטער, מין, הײך, װאָג און װי טעטיק איר זײַט.</p>
+        </div>
+        <div class="card">
+          <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a8 8 0 1 0 2.3-5.7"/><path d="M4 4v5h5"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>רעזערװ־קאָפּיעס אונטער אײַער קאָנטראָל</h3>
+          <p>מאַכט אַ רעזערװ־קאָפּיע פֿון אײַערע דאַטן אין אַ טעקע װאָס איר קלײַבט, מיט דער האַנט אָדער אױטאָמאַטיש יעדן טאָג, יעדע 3 טעג אָדער יעדע װאָך, און שטעלט זי אָפּ אױף אַ נײַעם טעלעפֿאָן.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <h3>19 שפּראַכן, 6 טעמעס</h3>
+          <p>ניצט Bodyscope אין אײַער אײגענער שפּראַך און קלײַבט די פֿאַרבן װאָס געפֿעלן אײַך, פֿון ליכטיקע ביז אַ טונקעלער „לבֿנה־שײַן“ טעמע.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>װי עס אַרבעט</h2>
+      <p class="section-lead">דרײַ זאַכן אײַנצושטעלן, און דערנאָך האַלט Bodyscope די צאָלן פֿונעם טאָג פֿאַר אײַך.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>דערצײלט װעגן זיך</h3>
+          <p>גיט אַרײַן געבורט־דאַטע, מין, הײך און װאָג. Bodyscope רעכנט אױס װיפֿל ענערגיע אײַער גוף דאַרף אין רו.</p>
+        </div>
+        <div class="step">
+          <h3>פֿאַרשרײַבט װאָס איר עסט</h3>
+          <p>לײגט צו יעדן מאָלצײַט פֿון דער שפּײַז־ליסטע, אָדער זוכט אין אַ שפּײַז־דאַטנבאַזע װאָס פֿעלט דאָרט.</p>
+        </div>
+        <div class="step">
+          <h3>באַװעגט זיך נאָר</h3>
+          <p>צינדט אָן דאָס טריט־צײלן אײן מאָל, און אײַערע טריט װערן געצײלט אַ גאַנצן טאָג. הײבט אָן אַ שפּאַציר אָדער אַ לױף, אָדער פֿאַרשרײַבט אַן אַנדער טעטיקײט, און זעט דעם טאָג־באַלאַנס.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="alt">
+    <div class="wrap privacy">
+      <div>
+        <h2>אײַערע דאַטן בלײַבן אױפֿן טעלעפֿאָן</h2>
+        <p class="section-lead" style="margin-bottom:0">Bodyscope אַרבעט אױף אײַער מכשיר. ס'איז ניטאָ קײן חשבון צו שאַפֿן, און גאָרנישט באַהאַלטנס װאָס שיקט אײַער פּראָפֿיל, מאָלצײַטן אָדער טעטיקײטן צו אַ סערװער.</p>
+      </div>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>קײן חשבון, קײן אַרײַנלאָגירן</b><span>אינסטאַלירט און הײבט אָן. גאָרנישט צו רעגיסטרירן.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>קײן רעקלאַמעס, קײן נאָכשפּירן</b><span>קײן רעקלאַמע־ אָדער אַנאַליז־קאָד אין דער אַפּליקאַציע.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>נאָר אײַער זוכעניש פֿאַרלאָזט דעם טעלעפֿאָן</b><span>װען איר זוכט אין אַן אָנליין שפּײַז־דאַטנבאַזע, װערן נאָר די זוך־װערטער געשיקט צו יענער סערװיס.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <div><b>די רעזערװ־קאָפּיעס גײען װוּ איר קלײַבט</b><span>אַ טעקע אױף אײַער טעלעפֿאָן, אַן SD־קאַרטל אָדער אײַער אײגענע װאָלקן־טעקע.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>אין אײַער שפּראַך</h2>
+      <p class="section-lead">Bodyscope רעדט 19 שפּראַכן. געזען אַ פֿאַלש װאָרט? העלפֿט אונדז עס פֿאַרריכטן, זעט די פֿראַגעס װײַטער אונטן.</p>
+      <div class="langs">
+        <a href="../" lang="en" hreflang="en" data-lang="en">English</a>
+        <a href="../ar/" lang="ar" hreflang="ar" data-lang="ar">العربية</a>
+        <a href="../bg/" lang="bg" hreflang="bg" data-lang="bg">Български</a>
+        <a href="../zh/" lang="zh" hreflang="zh" data-lang="zh">中文 (简体)</a>
+        <a href="../nl/" lang="nl" hreflang="nl" data-lang="nl">Nederlands</a>
+        <a href="../fi/" lang="fi" hreflang="fi" data-lang="fi">Suomi</a>
+        <a href="../fr/" lang="fr" hreflang="fr" data-lang="fr">Français</a>
+        <a href="../de/" lang="de" hreflang="de" data-lang="de">Deutsch</a>
+        <a href="../el/" lang="el" hreflang="el" data-lang="el">Ελληνικά</a>
+        <a href="../hu/" lang="hu" hreflang="hu" data-lang="hu">Magyar</a>
+        <a href="../it/" lang="it" hreflang="it" data-lang="it">Italiano</a>
+        <a href="../ja/" lang="ja" hreflang="ja" data-lang="ja">日本語</a>
+        <a href="../nb/" lang="nb" hreflang="nb" data-lang="nb">Norsk bokmål</a>
+        <a href="../ro/" lang="ro" hreflang="ro" data-lang="ro">Română</a>
+        <a href="../ru/" lang="ru" hreflang="ru" data-lang="ru">Русский</a>
+        <a href="../sr/" lang="sr" hreflang="sr" data-lang="sr">Српски</a>
+        <a href="../es/" lang="es" hreflang="es" data-lang="es">Español</a>
+        <a href="../sv/" lang="sv" hreflang="sv" data-lang="sv">Svenska</a>
+        <a href="../yi/" lang="yi" hreflang="yi" data-lang="yi" aria-current="page">ייִדיש</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <h2>פֿראַגעס</h2>
+      <p class="section-lead">די װאָס מיר הערן אָפֿטסטנס.</p>
+      <div class="faq">
+        <details>
+          <summary>קאָסט Bodyscope עפּעס?</summary>
+          <p>נײן. Bodyscope איז פֿרײַ, אָן רעקלאַמעס און אָן קױפֿן אין דער אַפּליקאַציע.</p>
+        </details>
+        <details>
+          <summary>אױף װעלכע טעלעפֿאָנען לױפֿט זי?</summary>
+          <p>אױף יעדן טעלעפֿאָן מיט Android 6.0 (Marshmallow) אָדער נײַער.</p>
+        </details>
+        <details>
+          <summary>װי אינסטאַליר איך זי פֿון דעם װעבזײַטל?</summary>
+          <p>לאָדט אַראָפּ די APK־טעקע מיטן קנעפּל אונטן און עפֿנט זי אױפֿן טעלעפֿאָן. דאָס ערשטע מאָל װעט Android בעטן דערלױבן צו אינסטאַלירן אַפּליקאַציעס פֿונעם בלעטערער אָדער טעקע־פֿאַרװאַלטער. Bodyscope קאָנטראָלירט אַלײן נײַע װערסיעס (װעגן ← קאָנטראָלירן נאָך דערהײַנטיקונגען).</p>
+        </details>
+        <details>
+          <summary>װי פֿיר איך איבער מײַנע דאַטן אױף אַ נײַעם טעלעפֿאָן?</summary>
+          <p>ניצט <em>רעזערװ־קאָפּיע פֿון דאַטן</em> אינעם מעניו (אָדער צינדט אָן אױטאָמאַטישע רעזערװ־קאָפּיעס אין די באַשטימונגען), קאָפּירט די טעקעס צום נײַעם טעלעפֿאָן, און ניצט דאָרט <em>אָפּשטעלן דאַטן</em>.</p>
+        </details>
+        <details>
+          <summary>טײל װערטער זײַנען אױף ענגליש, ניט אין מײַן שפּראַך. פֿאַר װאָס?</summary>
+          <p>אײַער שפּראַך איז אפֿשר נאָך ניט אינגאַנצן איבערגעזעצט. רוב איבערזעצונגען זײַנען צום ערשט געמאַכט געװאָרן אױטאָמאַטיש, טאָ טײל קענען אױך זײַן פֿאַלש. מיר װעלן זיך פֿרײען מיט אײַער הילף: שרײַבט אונדז.</p>
+        </details>
+        <details>
+          <summary>קען איך פֿאָרשלאָגן אַ מעגלעכקײט אָדער מעלדן אַ פּראָבלעם?</summary>
+          <p>זײַט אַזױ גוט. שרײַבט צו <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a>, אָדער ניצט <em>װעגן ← שרײַבט דעם מחבר אַ בליצבריװ</em> אין דער אַפּליקאַציע. מיר לײענען יעדן בריװ.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="download">
+    <div class="wrap">
+      <div class="box">
+        <h2>באַקומט Bodyscope</h2>
+        <p>פֿרײַ פֿאַר Android. לאָדט אַראָפּ, עפֿנט די טעקע אױפֿן טעלעפֿאָן, און איר זײַט גרײט.</p>
+        <!-- Always the APK of the latest GitHub release (attach it as bodyscope-release.apk). -->
+        <a class="btn" href="https://github.com/gtzav/Bodyscope/releases/latest/download/bodyscope-release.apk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          אַראָפּלאָדן APK
+        </a>
+        <p class="meta">Android 6.0+ · קײן חשבון ניט נײטיק</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="../bodyscope-icon.png?v=2" alt="" width="26" height="26">Bodyscope</a>
+    <span>© <span id="yr">2026</span> Yannis Tzavellas · Hyperlog</span>
+    <nav aria-label="פֿוסנאָטע">
+      <a href="#privacy">פּריװאַטקײט</a>
+      <a href="#faq">פֿראַגעס</a>
+      <a href="mailto:bodyscope.team@gmail.com">קאָנטאַקט</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+<script>
+function bsLang(c) {
+  try { localStorage.setItem("bs-lang", c); } catch (e) {}
+  location.href = "../" + (c === "en" ? "" : c + "/") + location.hash;
+}
+document.querySelectorAll(".langs a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    try { localStorage.setItem("bs-lang", a.dataset.lang); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>

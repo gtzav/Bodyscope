@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,45 @@
 <meta property="og:title" content="Bodyscope">
 <meta property="og:description" content="Balance what you eat with how you move. An Android app that keeps your data on your phone.">
 <meta property="og:image" content="bodyscope-icon.png?v=2">
+<link rel="canonical" href="https://gtzav.github.io/Bodyscope/">
+<link rel="alternate" hreflang="en" href="https://gtzav.github.io/Bodyscope/">
+<link rel="alternate" hreflang="ar" href="https://gtzav.github.io/Bodyscope/ar/">
+<link rel="alternate" hreflang="bg" href="https://gtzav.github.io/Bodyscope/bg/">
+<link rel="alternate" hreflang="zh" href="https://gtzav.github.io/Bodyscope/zh/">
+<link rel="alternate" hreflang="nl" href="https://gtzav.github.io/Bodyscope/nl/">
+<link rel="alternate" hreflang="fi" href="https://gtzav.github.io/Bodyscope/fi/">
+<link rel="alternate" hreflang="fr" href="https://gtzav.github.io/Bodyscope/fr/">
+<link rel="alternate" hreflang="de" href="https://gtzav.github.io/Bodyscope/de/">
+<link rel="alternate" hreflang="el" href="https://gtzav.github.io/Bodyscope/el/">
+<link rel="alternate" hreflang="hu" href="https://gtzav.github.io/Bodyscope/hu/">
+<link rel="alternate" hreflang="it" href="https://gtzav.github.io/Bodyscope/it/">
+<link rel="alternate" hreflang="ja" href="https://gtzav.github.io/Bodyscope/ja/">
+<link rel="alternate" hreflang="nb" href="https://gtzav.github.io/Bodyscope/nb/">
+<link rel="alternate" hreflang="ro" href="https://gtzav.github.io/Bodyscope/ro/">
+<link rel="alternate" hreflang="ru" href="https://gtzav.github.io/Bodyscope/ru/">
+<link rel="alternate" hreflang="sr" href="https://gtzav.github.io/Bodyscope/sr/">
+<link rel="alternate" hreflang="es" href="https://gtzav.github.io/Bodyscope/es/">
+<link rel="alternate" hreflang="sv" href="https://gtzav.github.io/Bodyscope/sv/">
+<link rel="alternate" hreflang="yi" href="https://gtzav.github.io/Bodyscope/yi/">
+<link rel="alternate" hreflang="x-default" href="https://gtzav.github.io/Bodyscope/">
+<script>
+/* Pick the visitor's language once: a language chosen on the site wins,
+   then the browser's preferred languages; English otherwise. */
+(function () {
+  var L = ["ar", "bg", "zh", "nl", "fi", "fr", "de", "el", "hu", "it", "ja", "nb", "ro", "ru", "sr", "es", "sv", "yi"], A = {"no": "nb", "nn": "nb", "ji": "yi"}, pick = null;
+  try { pick = localStorage.getItem("bs-lang"); } catch (e) {}
+  if (!pick) {
+    var prefs = navigator.languages || [navigator.language || ""];
+    for (var i = 0; i < prefs.length && !pick; i++) {
+      var p = String(prefs[i]).toLowerCase().split("-")[0];
+      if (p in A) p = A[p];
+      if (p === "en" || L.indexOf(p) >= 0) pick = p;
+    }
+  }
+  if (pick && pick !== "en" && L.indexOf(pick) >= 0)
+    location.replace(pick + "/" + location.hash);
+})();
+</script>
 <link rel="icon" type="image/png" href="bodyscope-icon.png?v=2">
 <!-- Self-contained on purpose: no web fonts, scripts or trackers,
      in keeping with the app's privacy promise. -->
@@ -106,12 +145,18 @@
   nav.links { display: flex; gap: 26px; }
   nav.links a { color: var(--muted); text-decoration: none; font-size: 16px; }
   nav.links a:hover { color: var(--text); }
+  .top .cta-sm { white-space: nowrap; }
+  /* medium screens: fewer section links so the bar stays on one line */
+  @media (max-width: 1000px) { nav.links a[href="#how"] { display: none; } }
+  @media (max-width: 860px) { nav.links a[href="#privacy"] { display: none; } }
+  /* phones: just Download and the language picker (sections follow below) */
   @media (max-width: 640px) {
-    nav.links { gap: 16px; }
-    nav.links a { font-size: 14px; }
-    nav.links a[href="#how"] { display: none; }
+    nav.links { display: none; }
+    .top .cta-sm { margin-inline-start: 0; }
   }
-  .top .cta-sm { margin-left: 10px; }
+  .lang-pick { font: inherit; font-size: 14px; color: var(--text); background: var(--surface);
+               border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; max-width: 9.5em; }
+  .top .cta-sm { margin-inline-start: 10px; }
 
   /* Buttons */
   .btn {
@@ -170,7 +215,7 @@
   .legend { display: grid; gap: 10px; font-size: 14px; flex: 1; min-width: 0; }
   .legend div { display: flex; align-items: center; gap: 8px; }
   .legend i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
-  .legend b { margin-left: auto; font-variant-numeric: tabular-nums; }
+  .legend b { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
   .rows { border-top: 1px solid var(--line); padding-top: 10px; display: grid; }
   .rows div { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14.5px;
               color: var(--muted); }
@@ -217,7 +262,10 @@
 
   /* Languages */
   .langs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .langs span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+  .langs a { color: var(--text); text-decoration: none; }
+  .langs a:hover { border-color: var(--teal); }
+  .langs a[aria-current] { border-color: var(--teal); background: var(--surface-2); font-weight: 650; }
+  .langs a { background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
                 padding: 6px 14px; font-size: 15px; }
 
   /* FAQ */
@@ -244,7 +292,7 @@
   footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
   footer .brand { font-size: 16px; }
   footer .brand img { width: 26px; height: 26px; }
-  footer nav { display: flex; gap: 18px; flex-wrap: wrap; margin-left: auto; }
+  footer nav { display: flex; gap: 18px; flex-wrap: wrap; margin-inline-start: auto; }
   footer a { color: var(--muted); }
 </style>
 </head>
@@ -265,6 +313,7 @@
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-primary btn-sm cta-sm" href="#download">Download</a>
+    <select class="lang-pick" aria-label="Language" onchange="bsLang(this.value)"><option value="en" selected>English</option><option value="ar">العربية</option><option value="bg">Български</option><option value="zh">中文 (简体)</option><option value="nl">Nederlands</option><option value="fi">Suomi</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="hu">Magyar</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="nb">Norsk bokmål</option><option value="ro">Română</option><option value="ru">Русский</option><option value="sr">Српски</option><option value="es">Español</option><option value="sv">Svenska</option><option value="yi">ייִדיש</option></select>
   </div>
 </header>
 
@@ -416,14 +465,26 @@
     <div class="wrap">
       <h2>In your language</h2>
       <p class="section-lead">Bodyscope speaks 19 languages. Spotted a wrong word? Help us fix it, see the FAQ below.</p>
-      <div class="langs" lang="">
-        <span lang="en">English</span><span lang="ar">العربية</span><span lang="bg">Български</span>
-        <span lang="zh">中文 (简体)</span><span lang="nl">Nederlands</span><span lang="fi">Suomi</span>
-        <span lang="fr">Français</span><span lang="de">Deutsch</span><span lang="el">Ελληνικά</span>
-        <span lang="hu">Magyar</span><span lang="it">Italiano</span><span lang="ja">日本語</span>
-        <span lang="nb">Norsk bokmål</span><span lang="ro">Română</span><span lang="ru">Русский</span>
-        <span lang="sr">Српски</span><span lang="es">Español</span><span lang="sv">Svenska</span>
-        <span lang="yi">ייִדיש</span>
+      <div class="langs">
+        <a href="" lang="en" hreflang="en" data-lang="en" aria-current="page">English</a>
+        <a href="ar/" lang="ar" hreflang="ar" data-lang="ar">العربية</a>
+        <a href="bg/" lang="bg" hreflang="bg" data-lang="bg">Български</a>
+        <a href="zh/" lang="zh" hreflang="zh" data-lang="zh">中文 (简体)</a>
+        <a href="nl/" lang="nl" hreflang="nl" data-lang="nl">Nederlands</a>
+        <a href="fi/" lang="fi" hreflang="fi" data-lang="fi">Suomi</a>
+        <a href="fr/" lang="fr" hreflang="fr" data-lang="fr">Français</a>
+        <a href="de/" lang="de" hreflang="de" data-lang="de">Deutsch</a>
+        <a href="el/" lang="el" hreflang="el" data-lang="el">Ελληνικά</a>
+        <a href="hu/" lang="hu" hreflang="hu" data-lang="hu">Magyar</a>
+        <a href="it/" lang="it" hreflang="it" data-lang="it">Italiano</a>
+        <a href="ja/" lang="ja" hreflang="ja" data-lang="ja">日本語</a>
+        <a href="nb/" lang="nb" hreflang="nb" data-lang="nb">Norsk bokmål</a>
+        <a href="ro/" lang="ro" hreflang="ro" data-lang="ro">Română</a>
+        <a href="ru/" lang="ru" hreflang="ru" data-lang="ru">Русский</a>
+        <a href="sr/" lang="sr" hreflang="sr" data-lang="sr">Српски</a>
+        <a href="es/" lang="es" hreflang="es" data-lang="es">Español</a>
+        <a href="sv/" lang="sv" hreflang="sv" data-lang="sv">Svenska</a>
+        <a href="yi/" lang="yi" hreflang="yi" data-lang="yi">ייִדיש</a>
       </div>
     </div>
   </section>
@@ -491,6 +552,17 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+<script>
+function bsLang(c) {
+  try { localStorage.setItem("bs-lang", c); } catch (e) {}
+  location.href = "" + (c === "en" ? "" : c + "/") + location.hash;
+}
+document.querySelectorAll(".langs a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    try { localStorage.setItem("bs-lang", a.dataset.lang); } catch (e) {}
+  });
+});
 </script>
 </body>
 </html>
