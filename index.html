@@ -75,24 +75,43 @@
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
   @media (min-width: 720px) { .wrap { padding: 0 28px; } }
 
-  /* Header */
+  /* Masthead: big logo + name across the page width */
+  .masthead { padding: 28px 0 0.42em; font-size: clamp(44px, 13.6vw, 158px); }
+  .masthead .brand-xl {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.18em; text-decoration: none; color: var(--text);
+    font-weight: 800; letter-spacing: -0.035em; line-height: 1;
+    /* name + logo fill the content width; ~160px tall on a laptop */
+    font-size: inherit;
+  }
+  .masthead .brand-xl img {
+    width: 1.05em; height: 1.05em; flex: none; border-radius: 0.2em;
+    filter: drop-shadow(0 0.04em 0.08em rgba(0,0,0,.18));
+  }
+
+  /* Sticky bar under the masthead: section links + Download */
   header.top {
     position: sticky; top: 0; z-index: 10;
     background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: saturate(1.4) blur(10px);
     -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
-  .top .wrap { display: flex; align-items: center; gap: 16px; height: 62px; }
+  .top .wrap { display: flex; align-items: center; justify-content: center;
+               gap: 16px; min-height: 58px; flex-wrap: wrap; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none;
            color: var(--text); font-weight: 700; font-size: 19px; }
   .brand img { width: 34px; height: 34px; }
-  nav.links { margin-left: auto; display: flex; gap: 22px; }
-  nav.links a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav.links { display: flex; gap: 26px; }
+  nav.links a { color: var(--muted); text-decoration: none; font-size: 16px; }
   nav.links a:hover { color: var(--text); }
-  @media (max-width: 640px) { nav.links { display: none; } }
-  .top .cta-sm { margin-left: auto; }
-  @media (min-width: 641px) { .top .cta-sm { margin-left: 0; } }
+  @media (max-width: 640px) {
+    nav.links { gap: 16px; }
+    nav.links a { font-size: 14px; }
+    nav.links a[href="#how"] { display: none; }
+  }
+  .top .cta-sm { margin-left: 10px; }
 
   /* Buttons */
   .btn {
@@ -231,9 +250,14 @@
 </head>
 <body>
 
+<div class="masthead">
+  <div class="wrap">
+    <a class="brand-xl" href="#"><img src="bodyscope-icon.png?v=2" alt="" width="256" height="256">Bodyscope</a>
+  </div>
+</div>
+
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#"><img src="bodyscope-icon.png?v=2" alt="" width="34" height="34">Bodyscope</a>
     <nav class="links" aria-label="Sections">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
