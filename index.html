@@ -31,9 +31,11 @@
 <link rel="alternate" hreflang="x-default" href="https://gtzav.github.io/Bodyscope/">
 <script>
 /* Pick the visitor's language once: a language chosen on the site wins,
-   then the browser's preferred languages; English otherwise. */
+   then the browser's preferred languages; English otherwise.
+   "?lang=en" (sent by the app in English) keeps this page. */
 (function () {
   var L = ["ar", "bg", "zh", "nl", "fi", "fr", "de", "el", "hu", "it", "ja", "nb", "ro", "ru", "sr", "es", "sv", "yi"], A = {"no": "nb", "nn": "nb", "ji": "yi"}, pick = null;
+  if (/[?&]lang=en\b/.test(location.search)) return;
   try { pick = localStorage.getItem("bs-lang"); } catch (e) {}
   if (!pick) {
     var prefs = navigator.languages || [navigator.language || ""];
