@@ -254,7 +254,7 @@
                 padding: 6px 14px; font-size: 15px; }
 
   /* FAQ */
-  .faq { display: grid; gap: 10px; max-width: 780px; }
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 780px; }
   details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
             padding: 4px 18px; }
   summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
@@ -263,6 +263,12 @@
   summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
   details[open] summary::after { content: "–"; }
   details p { margin: 0 0 14px; color: var(--muted); }
+  details h3 { font-size: 16px; margin: 4px 0 8px; }
+  details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
+  details li { margin-bottom: 6px; }
+  .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
+  .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
+               border: 1px solid var(--line); }
 
   /* Download */
   .download { text-align: center; }
@@ -499,6 +505,25 @@
           <summary>Javasolhatok funkciót, vagy jelezhetek hibát?</summary>
           <p>Kérjük. Írj a <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a> címre, vagy használd az alkalmazásban a <em>Névjegy → E-mail a szerzőnek</em> pontot. Minden üzenetet elolvasunk.</p>
         </details>
+        <details id="add-food">
+          <summary>Hogyan adhatok hozzá új élelmiszert?</summary>
+          <p>Két módja van. Mindkét esetben az élelmiszer bekerül az élelmiszerfájlba, és minden étkezéshez használható.</p>
+          <h3>1. Közvetlenül, az élelmiszerfájlban</h3>
+          <ol><li>Nyissa meg a menüt (☰), és a(z) <em>Fájlkezelés</em> alatt koppintson a(z) <em>Ételek</em> pontra.</li><li>Koppintson a jobb felső ⋮ ikonra, és válassza a(z) <em>Rekord hozzáadása</em> lehetőséget.</li><li>Adja meg az élelmiszer nevét, egy mennyiséget és annak mértékegységét (például 100 gr vagy 1 szelet), valamint ennek a mennyiségnek a szénhidrát-, fehérje-, zsír- és kalóriatartalmát. Koppintson a(z) <em>Elfogadás</em> gombra.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-1.webp" width="360" height="718" loading="lazy" alt="Menu: Files administration, Foods">
+            <img src="../img/faq-food-2.webp" width="360" height="718" loading="lazy" alt="Foods file: menu with Add record">
+            <img src="../img/faq-food-3.webp" width="360" height="718" loading="lazy" alt="The new food's form">
+          </div>
+          <h3>2. Étkezés összeállítása közben: összetett élelmiszer</h3>
+          <ol><li>A(z) <em>Napi étkezések</em> képernyőn koppintson a jobb alsó gombra, és válassza a(z) <em>Részletes étkezés hozzáadása</em> lehetőséget.</li><li>Koppintson a + gombra, és adja hozzá az összetevőket, mindegyiket a mennyiségével.</li><li>Jelölje be az élelmiszer összetevőit, koppintson a bal alsó menügombra, és válassza a(z) <em>Összetett étel a kijelöltekből</em> lehetőséget.</li><li>Adjon nevet az élelmiszernek, és koppintson a(z) <em>Elfogadás</em> gombra. Az étkezésben az összetevők helyére az új élelmiszer kerül, amely az élelmiszerfájlba is bekerül.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-4.webp" width="360" height="718" loading="lazy" alt="Day meals: Add meal details">
+            <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
+            <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
+          </div>
+          <p>A képernyőképek az alkalmazást angolul mutatják.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -533,6 +558,13 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+  /* A link to a question (e.g. #add-food, from the app's help mark) opens it */
+  function openHashed() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openHashed();
+  window.addEventListener('hashchange', openHashed);
 </script>
 <script>
 function bsLang(c) {

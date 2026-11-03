@@ -273,7 +273,7 @@
                 padding: 6px 14px; font-size: 15px; }
 
   /* FAQ */
-  .faq { display: grid; gap: 10px; max-width: 780px; }
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 780px; }
   details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
             padding: 4px 18px; }
   summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
@@ -282,6 +282,12 @@
   summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
   details[open] summary::after { content: "–"; }
   details p { margin: 0 0 14px; color: var(--muted); }
+  details h3 { font-size: 16px; margin: 4px 0 8px; }
+  details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
+  details li { margin-bottom: 6px; }
+  .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
+  .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
+               border: 1px solid var(--line); }
 
   /* Download */
   .download { text-align: center; }
@@ -522,6 +528,25 @@
           <summary>Can I suggest a feature or report a problem?</summary>
           <p>Please do. Email <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a>, or use <em>About → Email</em> in the app. Every message is read.</p>
         </details>
+        <details id="add-food">
+          <summary>How do I add a new food?</summary>
+          <p>There are two ways. Either way, the food is added to the food file, ready for all your meals.</p>
+          <h3>1. Directly, in the food file</h3>
+          <ol><li>Open the menu (☰) and, under <em>Files administration</em>, tap <em>Foods</em>.</li><li>Tap ⋮ at the top right and choose <em>Add record</em>.</li><li>Enter the food's name, a quantity and its unit (for example 100 gr, or 1 slice), and the carbohydrates, proteins, fats and calories of that quantity. Tap <em>Accept</em>.</li></ol>
+          <div class="shots">
+            <img src="img/faq-food-1.webp" width="360" height="718" loading="lazy" alt="Menu: Files administration, Foods">
+            <img src="img/faq-food-2.webp" width="360" height="718" loading="lazy" alt="Foods file: menu with Add record">
+            <img src="img/faq-food-3.webp" width="360" height="718" loading="lazy" alt="The new food's form">
+          </div>
+          <h3>2. While composing a meal: a composite food</h3>
+          <ol><li>On <em>Day meals</em>, tap the button at the bottom right and choose <em>Add meal details</em>.</li><li>Tap + and add the ingredients, each with its quantity.</li><li>Tick the ingredients that make up the food, tap the menu button at the bottom left and choose <em>Create composite food from selected</em>.</li><li>Give the food a name and tap <em>Accept</em>. In the meal, the ingredients are replaced by the new food, which is also added to the food file.</li></ol>
+          <div class="shots">
+            <img src="img/faq-food-4.webp" width="360" height="718" loading="lazy" alt="Day meals: Add meal details">
+            <img src="img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
+            <img src="img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
+          </div>
+          <p>The screenshots show the app in English.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -556,6 +581,13 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+  /* A link to a question (e.g. #add-food, from the app's help mark) opens it */
+  function openHashed() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openHashed();
+  window.addEventListener('hashchange', openHashed);
 </script>
 <script>
 function bsLang(c) {

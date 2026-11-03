@@ -254,7 +254,7 @@
                 padding: 6px 14px; font-size: 15px; }
 
   /* FAQ */
-  .faq { display: grid; gap: 10px; max-width: 780px; }
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 780px; }
   details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
             padding: 4px 18px; }
   summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
@@ -263,6 +263,12 @@
   summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
   details[open] summary::after { content: "–"; }
   details p { margin: 0 0 14px; color: var(--muted); }
+  details h3 { font-size: 16px; margin: 4px 0 8px; }
+  details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
+  details li { margin-bottom: 6px; }
+  .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
+  .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
+               border: 1px solid var(--line); }
 
   /* Download */
   .download { text-align: center; }
@@ -499,6 +505,25 @@
           <summary>Можно предложить функцию или сообщить о проблеме?</summary>
           <p>Конечно. Пишите на <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a> или используйте в приложении <em>О приложении → Написать автору</em>. Мы читаем каждое сообщение.</p>
         </details>
+        <details id="add-food">
+          <summary>Как добавить новый продукт?</summary>
+          <p>Есть два способа. В обоих продукт добавляется в файл продуктов и становится доступен для всех приёмов пищи.</p>
+          <h3>1. Напрямую, в файле продуктов</h3>
+          <ol><li>Откройте меню (☰) и в разделе <em>Управление файлами</em> нажмите <em>Продукты</em>.</li><li>Нажмите ⋮ в правом верхнем углу и выберите <em>Добавить запись</em>.</li><li>Введите название продукта, количество и его единицу (например, 100 gr или 1 ломтик), а также углеводы, белки, жиры и калории этого количества. Нажмите <em>Принять</em>.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-1.webp" width="360" height="718" loading="lazy" alt="Menu: Files administration, Foods">
+            <img src="../img/faq-food-2.webp" width="360" height="718" loading="lazy" alt="Foods file: menu with Add record">
+            <img src="../img/faq-food-3.webp" width="360" height="718" loading="lazy" alt="The new food's form">
+          </div>
+          <h3>2. При составлении приёма пищи: составной продукт</h3>
+          <ol><li>На экране <em>Питание за день</em> нажмите кнопку в правом нижнем углу и выберите <em>Добавить с составом</em>.</li><li>Нажмите + и добавьте ингредиенты, каждый со своим количеством.</li><li>Отметьте ингредиенты продукта, нажмите кнопку меню в левом нижнем углу и выберите <em>Создать составное блюдо из выбранного</em>.</li><li>Дайте продукту название и нажмите <em>Принять</em>. В приёме пищи ингредиенты заменяются новым продуктом, который также добавляется в файл продуктов.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-4.webp" width="360" height="718" loading="lazy" alt="Day meals: Add meal details">
+            <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
+            <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
+          </div>
+          <p>На снимках экрана приложение на английском языке.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -533,6 +558,13 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+  /* A link to a question (e.g. #add-food, from the app's help mark) opens it */
+  function openHashed() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openHashed();
+  window.addEventListener('hashchange', openHashed);
 </script>
 <script>
 function bsLang(c) {

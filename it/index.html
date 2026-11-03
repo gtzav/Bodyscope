@@ -254,7 +254,7 @@
                 padding: 6px 14px; font-size: 15px; }
 
   /* FAQ */
-  .faq { display: grid; gap: 10px; max-width: 780px; }
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 780px; }
   details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
             padding: 4px 18px; }
   summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
@@ -263,6 +263,12 @@
   summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
   details[open] summary::after { content: "–"; }
   details p { margin: 0 0 14px; color: var(--muted); }
+  details h3 { font-size: 16px; margin: 4px 0 8px; }
+  details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
+  details li { margin-bottom: 6px; }
+  .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
+  .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
+               border: 1px solid var(--line); }
 
   /* Download */
   .download { text-align: center; }
@@ -499,6 +505,25 @@
           <summary>Posso suggerire una funzione o segnalare un problema?</summary>
           <p>Certo. Scrivi a <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a>, oppure usa <em>Informazioni → E-mail del team di sviluppo</em> nell'app. Leggiamo ogni messaggio.</p>
         </details>
+        <details id="add-food">
+          <summary>Come aggiungo un nuovo alimento?</summary>
+          <p>Ci sono due modi. In entrambi, l'alimento viene aggiunto al file degli alimenti, pronto per tutti i tuoi pasti.</p>
+          <h3>1. Direttamente, nel file degli alimenti</h3>
+          <ol><li>Apri il menu (☰) e, in <em>Amministrazione file</em>, tocca <em>Alimenti</em>.</li><li>Tocca ⋮ in alto a destra e scegli <em>Aggiungi record</em>.</li><li>Inserisci il nome dell'alimento, una quantità e la sua unità (per esempio 100 gr, o 1 fetta), e i carboidrati, le proteine, i grassi e le calorie di quella quantità. Tocca <em>Accetta</em>.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-1.webp" width="360" height="718" loading="lazy" alt="Menu: Files administration, Foods">
+            <img src="../img/faq-food-2.webp" width="360" height="718" loading="lazy" alt="Foods file: menu with Add record">
+            <img src="../img/faq-food-3.webp" width="360" height="718" loading="lazy" alt="The new food's form">
+          </div>
+          <h3>2. Mentre componi un pasto: un alimento composto</h3>
+          <ol><li>In <em>Pasti giornalieri</em>, tocca il pulsante in basso a destra e scegli <em>Aggiungi i dettagli del pasto</em>.</li><li>Tocca + e aggiungi gli ingredienti, ciascuno con la sua quantità.</li><li>Seleziona gli ingredienti che formano l'alimento, tocca il pulsante del menu in basso a sinistra e scegli <em>Crea cibo composito da selezionato</em>.</li><li>Dai un nome all'alimento e tocca <em>Accetta</em>. Nel pasto, gli ingredienti vengono sostituiti dal nuovo alimento, che viene anche aggiunto al file degli alimenti.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-4.webp" width="360" height="718" loading="lazy" alt="Day meals: Add meal details">
+            <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
+            <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
+          </div>
+          <p>Le schermate mostrano l'app in inglese.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -533,6 +558,13 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+  /* A link to a question (e.g. #add-food, from the app's help mark) opens it */
+  function openHashed() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openHashed();
+  window.addEventListener('hashchange', openHashed);
 </script>
 <script>
 function bsLang(c) {

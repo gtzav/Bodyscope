@@ -254,7 +254,7 @@
                 padding: 6px 14px; font-size: 15px; }
 
   /* FAQ */
-  .faq { display: grid; gap: 10px; max-width: 780px; }
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 780px; }
   details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
             padding: 4px 18px; }
   summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
@@ -263,6 +263,12 @@
   summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
   details[open] summary::after { content: "–"; }
   details p { margin: 0 0 14px; color: var(--muted); }
+  details h3 { font-size: 16px; margin: 4px 0 8px; }
+  details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
+  details li { margin-bottom: 6px; }
+  .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
+  .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
+               border: 1px solid var(--line); }
 
   /* Download */
   .download { text-align: center; }
@@ -499,6 +505,25 @@
           <summary>Kan jag föreslå en funktion eller rapportera ett problem?</summary>
           <p>Gärna. Mejla <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a>, eller använd <em>Om → Mejla upphovspersonen</em> i appen. Vi läser varje meddelande.</p>
         </details>
+        <details id="add-food">
+          <summary>Hur lägger jag till ett nytt livsmedel?</summary>
+          <p>Det finns två sätt. På båda sätten läggs livsmedlet till i livsmedelsfilen, redo för alla dina måltider.</p>
+          <h3>1. Direkt, i livsmedelsfilen</h3>
+          <ol><li>Öppna menyn (☰) och tryck på <em>Livsmedel</em> under <em>Filhantering</em>.</li><li>Tryck på ⋮ uppe till höger och välj <em>Lägg till post</em>.</li><li>Ange namnet, en mängd och dess enhet (till exempel 100 gr eller 1 skiva) samt kolhydrater, protein, fett och kalorier för den mängden. Tryck på <em>Godkänn</em>.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-1.webp" width="360" height="718" loading="lazy" alt="Menu: Files administration, Foods">
+            <img src="../img/faq-food-2.webp" width="360" height="718" loading="lazy" alt="Foods file: menu with Add record">
+            <img src="../img/faq-food-3.webp" width="360" height="718" loading="lazy" alt="The new food's form">
+          </div>
+          <h3>2. När du sätter ihop en måltid: ett sammansatt livsmedel</h3>
+          <ol><li>I <em>Dagens måltider</em> trycker du på knappen nere till höger och väljer <em>Lägg till måltidsdetaljer</em>.</li><li>Tryck på + och lägg till ingredienserna, var och en med sin mängd.</li><li>Markera ingredienserna i livsmedlet, tryck på menyknappen nere till vänster och välj <em>Skapa sammansatt livsmedel av valda</em>.</li><li>Ge livsmedlet ett namn och tryck på <em>Godkänn</em>. I måltiden ersätts ingredienserna av det nya livsmedlet, som också läggs till i livsmedelsfilen.</li></ol>
+          <div class="shots">
+            <img src="../img/faq-food-4.webp" width="360" height="718" loading="lazy" alt="Day meals: Add meal details">
+            <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
+            <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
+          </div>
+          <p>Skärmbilderna visar appen på engelska.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -533,6 +558,13 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+  /* A link to a question (e.g. #add-food, from the app's help mark) opens it */
+  function openHashed() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  openHashed();
+  window.addEventListener('hashchange', openHashed);
 </script>
 <script>
 function bsLang(c) {
