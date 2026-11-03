@@ -98,7 +98,9 @@
   @media (min-width: 720px) { .wrap { padding: 0 28px; } }
 
   /* Masthead: big logo + name across the page width */
-  .masthead { padding: 28px 0 0.42em; font-size: clamp(44px, 13.6vw, 158px); }
+  .masthead { padding: 28px 0 0.42em; font-size: clamp(40px, 12vw, 140px); }
+  /* side margins, so logo and name do not run to the page edges */
+  .masthead .wrap { padding-inline: clamp(24px, 6vw, 72px); }
   .masthead .brand-xl {
     display: flex; align-items: center; justify-content: center;
     gap: 0.18em; text-decoration: none; color: var(--text);
