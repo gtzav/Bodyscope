@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>餐食与食物</h3>
-          <p>从约 900 种食物的初始列表中搭配餐食，或搜索 USDA 和 Open Food Facts 数据库。热量和营养素会自动为你累加。</p>
+          <p>从约 900 种食物的初始列表中搭配餐食，或搜索 USDA 和 Open Food Facts 数据库。热量和营养素会自动为你累加。也可以拍下你的餐盘，让 Claude AI 识别其中的食物（<a href="#photo-meal">需要你自己的密钥</a>）。</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>无广告，无跟踪</b><span>应用中没有广告或统计分析代码。</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>只有你的搜索会离开手机</b><span>当你在线搜索食物数据库时，只有搜索词会发送给该服务。</span></div></li>
+          <div><b>只有你的搜索和照片会离开手机</b><span>当你在线搜索食物数据库时，只有搜索词会发送给该服务。你选择分析的餐食照片会使用你自己的密钥发送给 Anthropic。</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>备份存放在你选择的地方</b><span>手机上的文件夹、SD 卡或你自己的云端文件夹。</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>截图显示的是英文界面的应用。</p>
+        </details>
+        <details id="photo-meal">
+          <summary>“拍照记餐”是如何工作的？</summary>
+          <p>Bodyscope 可以借助 Anthropic 的人工智能 Claude，从照片中识别你盘中的食物。此功能为可选功能，需要你自己的 Anthropic API 密钥。</p>
+          <h3>使用方法</h3>
+          <ol><li>在“<em>当日餐食</em>”中,点按右下角的按钮,选择“<em>添加餐食详情</em>”。</li><li>点按相机按钮（<em>拍照记餐</em>），然后选择“<em>拍照</em>”或“<em>从相册选择</em>”。</li><li>Claude 会列出它看到的食物，并附上估计的重量和热量。取消勾选错误的项目，然后点按“<em>添加到餐食</em>”。</li><li>点按餐中的食物即可更正其分量，然后像平常一样保存餐食。</li></ol>
+          <h3>获取密钥</h3>
+          <ol><li>在 <a href="https://console.anthropic.com">console.anthropic.com</a> 创建账户并购买一些额度。</li><li>创建一个 API 密钥并复制。</li><li>在 Bodyscope 中打开菜单（☰），进入“<em>设置 › 饮食设置</em>”，点按“<em>您的 Claude API 密钥</em>”并粘贴。</li></ol>
+          <h3>费用与隐私</h3>
+          <p>Anthropic 会按每张照片向你的密钥计费：按目前价格每张约 0.001–0.002 美元，即 100 张照片约 10–20 美分。额度需预先购买，最低约 5 美元。Bodyscope 本身不收取任何费用。</p>
+          <p>照片只在你使用此功能时，直接从手机发送给 Anthropic，中间没有任何 Bodyscope 服务器。密钥保存在应用的设置中，而设置也会保存在你的备份里，所以请妥善保管备份。</p>
         </details>
       </div>
     </div>

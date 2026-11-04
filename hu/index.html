@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Étkezések és ételek</h3>
-          <p>Állítsd össze étkezéseidet egy kb. 900 ételt tartalmazó kezdőlistából, vagy keress az USDA és az Open Food Facts adatbázisaiban. A kalóriákat és tápanyagokat összeadja helyetted.</p>
+          <p>Állítsd össze étkezéseidet egy kb. 900 ételt tartalmazó kezdőlistából, vagy keress az USDA és az Open Food Facts adatbázisaiban. A kalóriákat és tápanyagokat összeadja helyetted. Vagy fotózd le a tányérodat, és Claude AI felismeri az ételeket (<a href="#photo-meal">saját kulcs szükséges</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Nincs reklám, nincs követés</b><span>Nincs reklám- vagy analitikai kód az alkalmazásban.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>Csak a keresésed hagyja el a telefont</b><span>Ha online ételadatbázisban keresel, csak a keresőszavak jutnak el ahhoz a szolgáltatáshoz.</span></div></li>
+          <div><b>Csak a keresésed vagy a fotód hagyja el a telefont</b><span>Ha online ételadatbázisban keresel, csak a keresőszavak jutnak el ahhoz a szolgáltatáshoz. Egy étkezésfotó, amelyet elemeztetni szeretnél, a saját kulcsoddal az Anthropichoz kerül.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>A mentések oda kerülnek, ahová szeretnéd</b><span>Egy mappába a telefonodon, SD-kártyára vagy a saját felhőmappádba.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>A képernyőképek az alkalmazást angolul mutatják.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>Hogyan működik az „Étkezés fotóról”?</summary>
+          <p>A Bodyscope egy fotóról felismeri a tányérján lévő ételeket a Claude, az Anthropic mesterséges intelligenciája segítségével. Ez nem kötelező, és saját Anthropic API-kulcsot igényel.</p>
+          <h3>Használat</h3>
+          <ol><li>A(z) <em>Napi étkezések</em> képernyőn koppintson a jobb alsó gombra, és válassza a(z) <em>Részletes étkezés hozzáadása</em> lehetőséget.</li><li>Koppintson a kamera gombra (<em>Étkezés fotóról</em>), és válassza a <em>Fotó készítése</em> vagy a <em>Választás a galériából</em> lehetőséget.</li><li>Claude felsorolja a látott ételeket becsült tömeggel és kalóriával. Vegye ki a pipát a hibásak elől, és koppintson a <em>Hozzáadás az étkezéshez</em> gombra.</li><li>Koppintson egy ételre az étkezésben a mennyisége javításához, majd mentse az étkezést a szokásos módon.</li></ol>
+          <h3>Kulcs beszerzése</h3>
+          <ol><li>Hozzon létre fiókot a <a href="https://console.anthropic.com">console.anthropic.com</a> oldalon, és vásároljon egy kis egyenleget.</li><li>Hozzon létre egy API-kulcsot, és másolja ki.</li><li>A Bodyscope-ban nyissa meg a menüt (☰), lépjen a <em>Beállítások › Ételbeállítások</em> pontra, koppintson <em>Az Ön Claude API-kulcsa</em> elemre, és illessze be.</li></ol>
+          <h3>Költség és adatvédelem</h3>
+          <p>Az Anthropic minden fotót az Ön kulcsára terhel: a jelenlegi árakon fotónként kb. 0,001–0,002 USD, vagyis 100 fotó nagyjából 10–20 centbe kerül. Az egyenleget előre kell megvenni, kb. 5 USD-tól. Maga a Bodyscope semmibe sem kerül.</p>
+          <p>A fotó a telefonjáról közvetlenül az Anthropichoz kerül, és csak akkor, ha ezt a funkciót használja; nincs közbeiktatott Bodyscope-szerver. A kulcs az alkalmazás beállításaiban van, amelyek a biztonsági mentésekbe is bekerülnek, ezért ezeket tartsa bizalmasan.</p>
         </details>
       </div>
     </div>

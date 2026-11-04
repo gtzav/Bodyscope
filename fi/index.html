@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Ateriat ja ruoat</h3>
-          <p>Kokoa ateriasi noin 900 ruoan aloitusluettelosta tai hae USDA:n ja Open Food Factsin tietokannoista. Kalorit ja ravintoaineet lasketaan yhteen puolestasi.</p>
+          <p>Kokoa ateriasi noin 900 ruoan aloitusluettelosta tai hae USDA:n ja Open Food Factsin tietokannoista. Kalorit ja ravintoaineet lasketaan yhteen puolestasi. Tai kuvaa lautasesi ja anna Claude AI:n tunnistaa ruoat (<a href="#photo-meal">vaatii oman avaimen</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Ei mainoksia, ei seurantaa</b><span>Sovelluksessa ei ole mainos- tai analytiikkakoodia.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>Vain hakusi lähtee puhelimesta</b><span>Kun haet verkon ruokatietokannasta, palveluun lähetetään vain hakusanat.</span></div></li>
+          <div><b>Vain hakusi tai kuvasi lähtee puhelimesta</b><span>Kun haet verkon ruokatietokannasta, palveluun lähetetään vain hakusanat. Ateriakuva, jonka päätät analysoida, lähtee Anthropicille omalla avaimellasi.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Varmuuskopiot menevät minne haluat</b><span>Kansioon puhelimessa, SD-kortille tai omaan pilvikansioosi.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>Kuvakaappaukset näyttävät sovelluksen englanniksi.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>Miten ”Ateria kuvasta” toimii?</summary>
+          <p>Bodyscope voi tunnistaa lautasesi ruoat kuvasta Clauden, Anthropicin tekoälyn, avulla. Toiminto on vapaaehtoinen ja vaatii oman Anthropic-API-avaimen.</p>
+          <h3>Käyttö</h3>
+          <ol><li>Napauta näkymässä <em>Päivän ateriat</em> oikean alakulman painiketta ja valitse <em>Lisää aterian tiedot</em>.</li><li>Napauta kamerapainiketta (<em>Ateria kuvasta</em>) ja valitse <em>Ota kuva</em> tai <em>Valitse galleriasta</em>.</li><li>Claude luettelee näkemänsä ruoat arvioidun painon ja kalorien kera. Poista valinta virheellisistä ja napauta <em>Lisää ateriaan</em>.</li><li>Korjaa määrä napauttamalla ruokaa ateriassa ja tallenna ateria tavalliseen tapaan.</li></ol>
+          <h3>Avaimen hankkiminen</h3>
+          <ol><li>Luo tili osoitteessa <a href="https://console.anthropic.com">console.anthropic.com</a> ja osta vähän saldoa.</li><li>Luo API-avain ja kopioi se.</li><li>Avaa Bodyscopessa valikko (☰), siirry kohtaan <em>Asetukset › Ruoka-asetukset</em>, napauta <em>Claude API -avaimesi</em> ja liitä avain.</li></ol>
+          <h3>Hinta ja yksityisyys</h3>
+          <p>Anthropic laskuttaa jokaisen kuvan avaimeltasi: nykyhinnoin noin 0,001–0,002 Yhdysvaltain dollaria kuvalta, eli 100 kuvaa maksaa noin 10–20 senttiä. Saldo ostetaan etukäteen, noin 5 dollarista alkaen. Bodyscope itse ei maksa mitään.</p>
+          <p>Kuva lähtee puhelimestasi suoraan Anthropicille, ja vain kun käytät tätä toimintoa; välissä ei ole Bodyscopen palvelinta. Avain säilyy sovelluksen asetuksissa, jotka tallentuvat myös varmuuskopioihisi, joten pidä ne yksityisinä.</p>
         </details>
       </div>
     </div>

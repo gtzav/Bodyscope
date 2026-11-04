@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Comidas y alimentos</h3>
-          <p>Arma tus comidas a partir de una lista inicial de unos 900 alimentos, o busca en las bases de datos de USDA y Open Food Facts. Las calorías y los nutrientes se suman por ti.</p>
+          <p>Arma tus comidas a partir de una lista inicial de unos 900 alimentos, o busca en las bases de datos de USDA y Open Food Facts. Las calorías y los nutrientes se suman por ti. O fotografía tu plato y deja que Claude AI reconozca los alimentos (<a href="#photo-meal">necesitas tu propia clave</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Sin anuncios, sin rastreo</b><span>Ningún código de publicidad ni de analítica en la app.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>Solo lo que buscas sale del teléfono</b><span>Cuando buscas en una base de datos de alimentos en línea, solo se envían a ese servicio las palabras de búsqueda.</span></div></li>
+          <div><b>Solo lo que buscas o fotografías sale del teléfono</b><span>Cuando buscas en una base de datos de alimentos en línea, solo se envían a ese servicio las palabras de búsqueda. Una foto de comida que eliges analizar va a Anthropic, con tu propia clave.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Las copias van donde tú elijas</b><span>Una carpeta en tu teléfono, una tarjeta SD o tu propia carpeta en la nube.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>Las capturas muestran la aplicación en inglés.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>¿Cómo funciona «Comida desde foto»?</summary>
+          <p>Bodyscope puede reconocer los alimentos de tu plato a partir de una foto, con Claude, la IA de Anthropic. Es opcional y necesita tu propia clave API de Anthropic.</p>
+          <h3>Cómo se usa</h3>
+          <ol><li>En <em>Comidas del día</em>, toca el botón de abajo a la derecha y elige <em>Agregar detalles de la comida</em>.</li><li>Toca el botón de la cámara (<em>Comida desde foto</em>) y elige <em>Hacer una foto</em> o <em>Elegir de la galería</em>.</li><li>Claude muestra los alimentos que ve, con su peso y calorías estimados. Desmarca lo que esté mal y toca <em>Añadir a la comida</em>.</li><li>Toca un alimento de la comida para corregir su cantidad y guarda la comida como siempre.</li></ol>
+          <h3>Cómo conseguir una clave</h3>
+          <ol><li>Crea una cuenta en <a href="https://console.anthropic.com">console.anthropic.com</a> y compra algo de crédito.</li><li>Crea una clave API y cópiala.</li><li>En Bodyscope, abre el menú (☰), ve a <em>Ajustes › Ajustes de alimentos</em>, toca <em>Su clave de la API de Claude</em> y pégala.</li></ol>
+          <h3>Coste y privacidad</h3>
+          <p>Anthropic cobra cada foto a tu clave: a los precios actuales, unos 0,001–0,002 dólares estadounidenses por foto, así que 100 fotos cuestan unos 10–20 centavos. El crédito se compra por adelantado, desde unos 5 dólares. Bodyscope en sí no cobra nada.</p>
+          <p>La foto va directamente de tu teléfono a Anthropic, y solo cuando usas esta función; no hay ningún servidor de Bodyscope de por medio. La clave se guarda en los ajustes de la app, que también se guardan en tus copias de seguridad, así que mantenlas privadas.</p>
         </details>
       </div>
     </div>

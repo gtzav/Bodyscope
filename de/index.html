@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Mahlzeiten und Lebensmittel</h3>
-          <p>Stelle deine Mahlzeiten aus einer Startliste von rund 900 Lebensmitteln zusammen oder durchsuche die Datenbanken von USDA und Open Food Facts. Kalorien und Nährstoffe werden für dich addiert.</p>
+          <p>Stelle deine Mahlzeiten aus einer Startliste von rund 900 Lebensmitteln zusammen oder durchsuche die Datenbanken von USDA und Open Food Facts. Kalorien und Nährstoffe werden für dich addiert. Oder fotografiere deinen Teller und lass Claude AI die Lebensmittel erkennen (<a href="#photo-meal">eigener Schlüssel nötig</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Keine Werbung, kein Tracking</b><span>Kein Werbe- oder Analysecode in der App.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>Nur deine Suche verlässt das Handy</b><span>Wenn du online in einer Lebensmitteldatenbank suchst, werden nur die Suchbegriffe an diesen Dienst gesendet.</span></div></li>
+          <div><b>Nur deine Suche oder dein Foto verlässt das Handy</b><span>Wenn du online in einer Lebensmitteldatenbank suchst, werden nur die Suchbegriffe an diesen Dienst gesendet. Ein Mahlzeitfoto, das du analysieren lässt, geht mit deinem eigenen Schlüssel an Anthropic.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Backups landen, wo du willst</b><span>In einem Ordner auf dem Handy, auf einer SD-Karte oder in deinem eigenen Cloud-Ordner.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>Die Bildschirmfotos zeigen die App auf Englisch.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>Wie funktioniert „Mahlzeit per Foto“?</summary>
+          <p>Bodyscope kann die Lebensmittel auf Ihrem Teller anhand eines Fotos erkennen, mit Claude, der KI von Anthropic. Das ist optional und erfordert Ihren eigenen API-Schlüssel von Anthropic.</p>
+          <h3>So geht's</h3>
+          <ol><li>Tippen Sie in <em>Tagesmahlzeiten</em> unten rechts auf die Schaltfläche und wählen Sie <em>Mahlzeitdetails hinzufügen</em>.</li><li>Tippen Sie auf die Kamera-Schaltfläche (<em>Mahlzeit per Foto</em>) und wählen Sie <em>Foto aufnehmen</em> oder <em>Aus Galerie wählen</em>.</li><li>Claude listet die erkannten Lebensmittel mit geschätztem Gewicht und Kalorien auf. Entfernen Sie den Haken bei Falschem und tippen Sie auf <em>Zur Mahlzeit hinzufügen</em>.</li><li>Tippen Sie in der Mahlzeit auf ein Lebensmittel, um seine Menge zu korrigieren, und speichern Sie die Mahlzeit wie gewohnt.</li></ol>
+          <h3>Einen Schlüssel bekommen</h3>
+          <ol><li>Legen Sie unter <a href="https://console.anthropic.com">console.anthropic.com</a> ein Konto an und kaufen Sie etwas Guthaben.</li><li>Erstellen Sie einen API-Schlüssel und kopieren Sie ihn.</li><li>Öffnen Sie in Bodyscope das Menü (☰), gehen Sie zu <em>Einstellungen › Lebensmittelanpassungen</em>, tippen Sie auf <em>Ihr Claude-API-Schlüssel</em> und fügen Sie ihn ein.</li></ol>
+          <h3>Kosten und Datenschutz</h3>
+          <p>Anthropic berechnet jedes Foto über Ihren Schlüssel: zu aktuellen Preisen etwa 0,001–0,002 US-Dollar pro Foto, 100 Fotos kosten also rund 10–20 Cent. Guthaben wird im Voraus gekauft, ab etwa 5 US-Dollar. Bodyscope selbst kostet nichts.</p>
+          <p>Das Foto geht direkt von Ihrem Handy an Anthropic, und nur, wenn Sie diese Funktion nutzen; kein Bodyscope-Server ist dazwischen. Der Schlüssel liegt in den Einstellungen der App, die auch in Ihren Sicherungen gespeichert werden; halten Sie diese daher privat.</p>
         </details>
       </div>
     </div>

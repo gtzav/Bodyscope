@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>الوجبات والأطعمة</h3>
-          <p>كوّن وجباتك من قائمة أولية تضم نحو 900 طعام، أو ابحث في قاعدتي بيانات USDA وOpen Food Facts. تُجمع السعرات والعناصر الغذائية نيابةً عنك.</p>
+          <p>كوّن وجباتك من قائمة أولية تضم نحو 900 طعام، أو ابحث في قاعدتي بيانات USDA وOpen Food Facts. تُجمع السعرات والعناصر الغذائية نيابةً عنك. أو صوّر طبقك ودع Claude AI يتعرّف على الأطعمة (<a href="#photo-meal">يلزم مفتاحك الخاص</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>بلا إعلانات ولا تتبّع</b><span>لا توجد في التطبيق شيفرة إعلانات أو تحليلات.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>لا يغادر الهاتف إلا ما تبحث عنه</b><span>عندما تبحث في قاعدة بيانات أطعمة عبر الإنترنت، تُرسل كلمات البحث وحدها إلى تلك الخدمة.</span></div></li>
+          <div><b>لا يغادر الهاتف إلا ما تبحث عنه أو تصوّره</b><span>عندما تبحث في قاعدة بيانات أطعمة عبر الإنترنت، تُرسل كلمات البحث وحدها إلى تلك الخدمة. وصورة الوجبة التي تختار تحليلها تُرسل إلى Anthropic بمفتاحك الخاص.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>النسخ الاحتياطية حيث تختار</b><span>مجلد على هاتفك، أو بطاقة SD، أو مجلدك الخاص في السحابة.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>تُظهر لقطات الشاشة التطبيق باللغة الإنجليزية.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>كيف تعمل ميزة «وجبة من صورة»؟</summary>
+          <p>يستطيع Bodyscope التعرّف على الأطعمة في طبقك من صورة، باستخدام Claude، الذكاء الاصطناعي من Anthropic. الميزة اختيارية وتحتاج إلى مفتاح API خاص بك من Anthropic.</p>
+          <h3>طريقة الاستخدام</h3>
+          <ol><li>في <em>وجبات اليوم</em>، اضغط الزر في الأسفل واختر <em>إضافة تفاصيل الوجبة</em>.</li><li>اضغط زر الكاميرا (<em>وجبة من صورة</em>) واختر <em>التقاط صورة</em> أو <em>الاختيار من المعرض</em>.</li><li>يعرض Claude الأطعمة التي يراها مع الوزن والسعرات التقديرية. ألغِ تحديد ما هو خاطئ واضغط <em>إضافة إلى الوجبة</em>.</li><li>اضغط على طعام في الوجبة لتصحيح كميته، ثم احفظ الوجبة كالمعتاد.</li></ol>
+          <h3>الحصول على مفتاح</h3>
+          <ol><li>أنشئ حسابًا في <a href="https://console.anthropic.com">console.anthropic.com</a> واشترِ بعض الرصيد.</li><li>أنشئ مفتاح API وانسخه.</li><li>في Bodyscope افتح القائمة (☰)، وانتقل إلى <em>الإعدادات › ضبط الأطعمة</em>، واضغط <em>مفتاح Claude API الخاص بك</em> والصقه.</li></ol>
+          <h3>التكلفة والخصوصية</h3>
+          <p>تحتسب Anthropic كل صورة على مفتاحك: بالأسعار الحالية نحو 0.001–0.002 دولار أمريكي للصورة، أي أن 100 صورة تكلّف قرابة 10–20 سنتًا. يُشترى الرصيد مسبقًا، بدءًا من نحو 5 دولارات. أما Bodyscope نفسه فلا يتقاضى شيئًا.</p>
+          <p>تنتقل الصورة من هاتفك إلى Anthropic مباشرة، وفقط عندما تستخدم هذه الميزة؛ لا يوجد خادم لـ Bodyscope في المنتصف. يُحفظ المفتاح في إعدادات التطبيق، وهي تُحفظ أيضًا في نسخك الاحتياطية، فاحرص على إبقائها خاصة.</p>
         </details>
       </div>
     </div>

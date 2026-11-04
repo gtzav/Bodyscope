@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Mese și alimente</h3>
-          <p>Alcătuiește-ți mesele dintr-o listă inițială de circa 900 de alimente sau caută în bazele de date USDA și Open Food Facts. Caloriile și nutrienții se adună pentru tine.</p>
+          <p>Alcătuiește-ți mesele dintr-o listă inițială de circa 900 de alimente sau caută în bazele de date USDA și Open Food Facts. Caloriile și nutrienții se adună pentru tine. Sau fotografiază-ți farfuria și lasă Claude AI să recunoască alimentele (<a href="#photo-meal">e nevoie de propria ta cheie</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Fără reclame, fără urmărire</b><span>Niciun cod de publicitate sau de analiză în aplicație.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>Doar ce cauți pleacă de pe telefon</b><span>Când cauți într-o bază de date de alimente online, doar cuvintele căutate ajung la acel serviciu.</span></div></li>
+          <div><b>Doar ce cauți sau fotografiezi pleacă de pe telefon</b><span>Când cauți într-o bază de date de alimente online, doar cuvintele căutate ajung la acel serviciu. O fotografie a mesei pe care alegi s-o analizezi ajunge la Anthropic, cu propria ta cheie.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Copiile merg unde alegi tu</b><span>Un dosar pe telefon, un card SD sau propriul tău dosar în cloud.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>Capturile de ecran arată aplicația în engleză.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>Cum funcționează „Masă din fotografie”?</summary>
+          <p>Bodyscope poate recunoaște alimentele din farfuria dvs. dintr-o fotografie, cu Claude, inteligența artificială a Anthropic. Este opțional și necesită propria dvs. cheie API Anthropic.</p>
+          <h3>Cum se folosește</h3>
+          <ol><li>În <em>Mesele zilei</em>, atingeți butonul din dreapta jos și alegeți <em>Adăugați detaliile mesei</em>.</li><li>Atingeți butonul camerei (<em>Masă din fotografie</em>) și alegeți <em>Faceți o fotografie</em> sau <em>Alegeți din galerie</em>.</li><li>Claude listează alimentele pe care le vede, cu greutatea și caloriile estimate. Debifați ce este greșit și atingeți <em>Adăugare la masă</em>.</li><li>Atingeți un aliment din masă pentru a-i corecta cantitatea, apoi salvați masa ca de obicei.</li></ol>
+          <h3>Cum obțineți o cheie</h3>
+          <ol><li>Creați un cont pe <a href="https://console.anthropic.com">console.anthropic.com</a> și cumpărați puțin credit.</li><li>Creați o cheie API și copiați-o.</li><li>În Bodyscope deschideți meniul (☰), mergeți la <em>Setări › Reglaje pentru alimente</em>, atingeți <em>Cheia dvs. pentru API-ul Claude</em> și lipiți-o.</li></ol>
+          <h3>Cost și confidențialitate</h3>
+          <p>Anthropic facturează fiecare fotografie pe cheia dvs.: la prețurile actuale, circa 0,001–0,002 dolari americani pe fotografie, deci 100 de fotografii costă aproximativ 10–20 de cenți. Creditul se cumpără în avans, de la circa 5 dolari. Bodyscope în sine nu costă nimic.</p>
+          <p>Fotografia merge de pe telefon direct la Anthropic și doar când folosiți această funcție; nu există niciun server Bodyscope la mijloc. Cheia este păstrată în setările aplicației, care sunt salvate și în copiile de rezervă, așa că păstrați-le private.</p>
         </details>
       </div>
     </div>

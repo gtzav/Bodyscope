@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Repas et aliments</h3>
-          <p>Composez vos repas à partir d'une liste de départ d'environ 900 aliments, ou cherchez dans les bases USDA et Open Food Facts. Calories et nutriments sont additionnés pour vous.</p>
+          <p>Composez vos repas à partir d'une liste de départ d'environ 900 aliments, ou cherchez dans les bases USDA et Open Food Facts. Calories et nutriments sont additionnés pour vous. Ou photographiez votre assiette et laissez Claude AI reconnaître les aliments (<a href="#photo-meal">votre propre clé est nécessaire</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -441,7 +441,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Sans publicité, sans pistage</b><span>Aucun code publicitaire ou de statistiques dans l'application.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-          <div><b>Seules vos recherches quittent le téléphone</b><span>Quand vous cherchez dans une base d'aliments en ligne, seuls les mots recherchés sont envoyés à ce service.</span></div></li>
+          <div><b>Seules vos recherches et vos photos quittent le téléphone</b><span>Quand vous cherchez dans une base d'aliments en ligne, seuls les mots recherchés sont envoyés à ce service. Une photo de repas que vous choisissez d'analyser part chez Anthropic, avec votre propre clé.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
           <div><b>Les sauvegardes vont où vous voulez</b><span>Un dossier sur votre téléphone, une carte SD ou votre propre dossier cloud.</span></div></li>
       </ul>
@@ -523,6 +523,17 @@
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
           <p>Les captures d'écran montrent l'application en anglais.</p>
+        </details>
+        <details id="photo-meal">
+          <summary>Comment fonctionne « Repas en photo » ?</summary>
+          <p>Bodyscope peut reconnaître les aliments de votre assiette à partir d'une photo, grâce à Claude, l'IA d'Anthropic. C'est facultatif et cela nécessite votre propre clé API Anthropic.</p>
+          <h3>Utilisation</h3>
+          <ol><li>Dans <em>Repas de jour</em>, touchez le bouton en bas à droite et choisissez <em>Ajouter les détails du repas</em>.</li><li>Touchez le bouton appareil photo (<em>Repas en photo</em>) et choisissez <em>Prendre une photo</em> ou <em>Choisir dans la galerie</em>.</li><li>Claude liste les aliments qu'il voit, avec leur poids et leurs calories estimés. Décochez ce qui est faux et touchez <em>Ajouter au repas</em>.</li><li>Touchez un aliment du repas pour corriger sa quantité, puis enregistrez le repas comme d'habitude.</li></ol>
+          <h3>Obtenir une clé</h3>
+          <ol><li>Créez un compte sur <a href="https://console.anthropic.com">console.anthropic.com</a> et achetez un peu de crédit.</li><li>Créez une clé API et copiez-la.</li><li>Dans Bodyscope, ouvrez le menu (☰), allez dans <em>Paramètres › Ajustements alimentaires</em>, touchez <em>Votre clé API Claude</em> et collez-la.</li></ol>
+          <h3>Coût et confidentialité</h3>
+          <p>Anthropic facture chaque photo sur votre clé : aux prix actuels environ 0,001–0,002 dollar US par photo, soit 10 à 20 cents pour 100 photos. Le crédit s'achète à l'avance, à partir d'environ 5 dollars US. Bodyscope lui-même ne coûte rien.</p>
+          <p>La photo part directement de votre téléphone vers Anthropic, et seulement quand vous utilisez cette fonction ; aucun serveur Bodyscope n'intervient. La clé est conservée dans les paramètres de l'application, qui sont aussi enregistrés dans vos sauvegardes : gardez-les privées.</p>
         </details>
       </div>
     </div>
