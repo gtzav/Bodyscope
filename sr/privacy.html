@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="sr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика приватности · Bodyscope</title>
+<meta name="description" content="Bodyscope чува ваше податке на телефону: без налога, реклама и аналитике. Шта напушта телефон, и само када то користите.">
+<link rel="canonical" href="https://gtzav.github.io/Bodyscope/sr/privacy.html">
+<link rel="alternate" hreflang="en" href="https://gtzav.github.io/Bodyscope/privacy.html">
+<link rel="alternate" hreflang="ar" href="https://gtzav.github.io/Bodyscope/ar/privacy.html">
+<link rel="alternate" hreflang="bg" href="https://gtzav.github.io/Bodyscope/bg/privacy.html">
+<link rel="alternate" hreflang="zh" href="https://gtzav.github.io/Bodyscope/zh/privacy.html">
+<link rel="alternate" hreflang="nl" href="https://gtzav.github.io/Bodyscope/nl/privacy.html">
+<link rel="alternate" hreflang="fi" href="https://gtzav.github.io/Bodyscope/fi/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://gtzav.github.io/Bodyscope/fr/privacy.html">
+<link rel="alternate" hreflang="de" href="https://gtzav.github.io/Bodyscope/de/privacy.html">
+<link rel="alternate" hreflang="el" href="https://gtzav.github.io/Bodyscope/el/privacy.html">
+<link rel="alternate" hreflang="hu" href="https://gtzav.github.io/Bodyscope/hu/privacy.html">
+<link rel="alternate" hreflang="it" href="https://gtzav.github.io/Bodyscope/it/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://gtzav.github.io/Bodyscope/ja/privacy.html">
+<link rel="alternate" hreflang="nb" href="https://gtzav.github.io/Bodyscope/nb/privacy.html">
+<link rel="alternate" hreflang="ro" href="https://gtzav.github.io/Bodyscope/ro/privacy.html">
+<link rel="alternate" hreflang="ru" href="https://gtzav.github.io/Bodyscope/ru/privacy.html">
+<link rel="alternate" hreflang="sr" href="https://gtzav.github.io/Bodyscope/sr/privacy.html">
+<link rel="alternate" hreflang="es" href="https://gtzav.github.io/Bodyscope/es/privacy.html">
+<link rel="alternate" hreflang="sv" href="https://gtzav.github.io/Bodyscope/sv/privacy.html">
+<link rel="alternate" hreflang="yi" href="https://gtzav.github.io/Bodyscope/yi/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://gtzav.github.io/Bodyscope/privacy.html">
+
+<link rel="icon" type="image/png" href="../bodyscope-icon.png?v=2">
+<style>
+  :root {
+    --bg: #f6fafa;
+    --surface: #ffffff;
+    --surface-2: #eef6f6;
+    --text: #12262b;
+    --muted: #4f6569;
+    --line: #d7e6e7;
+    --teal: #0f9a9c;
+    --teal-strong: #0b7c7e;
+    --cyan: #19d3d8;
+    --violet: #6b2fd0;
+    --violet-soft: #ece4fb;
+    --in: #e2732d;
+    --out: #0f9a9c;
+    --shadow: 0 1px 2px rgba(18,38,43,.06), 0 8px 28px rgba(18,38,43,.08);
+    --radius: 18px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1719;
+      --surface: #142225;
+      --surface-2: #192c30;
+      --text: #e5f1f2;
+      --muted: #9db4b7;
+      --line: #25393d;
+      --teal: #2cc3c5;
+      --teal-strong: #4fd6d8;
+      --cyan: #3ce0e4;
+      --violet: #a77cf2;
+      --violet-soft: #2a2140;
+      --in: #f0904f;
+      --out: #2cc3c5;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1719; --surface: #142225; --surface-2: #192c30;
+    --text: #e5f1f2; --muted: #9db4b7; --line: #25393d;
+    --teal: #2cc3c5; --teal-strong: #4fd6d8; --cyan: #3ce0e4;
+    --violet: #a77cf2; --violet-soft: #2a2140;
+    --in: #f0904f; --out: #2cc3c5;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans",
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal-strong); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 28px; } }
+
+  /* Masthead: big logo + name across the page width */
+  .masthead { padding: 28px 0 0.42em; font-size: clamp(40px, 12vw, 140px); }
+  /* side margins, so logo and name do not run to the page edges */
+  .masthead .wrap { padding-inline: clamp(24px, 6vw, 72px); }
+  .masthead .brand-xl {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.18em; text-decoration: none; color: var(--text);
+    font-weight: 800; letter-spacing: -0.035em; line-height: 1;
+    /* name + logo fill the content width; ~160px tall on a laptop */
+    font-size: inherit;
+  }
+  .masthead .brand-xl img {
+    width: 1.05em; height: 1.05em; flex: none; border-radius: 0.2em;
+    filter: drop-shadow(0 0.04em 0.08em rgba(0,0,0,.18));
+  }
+
+  /* Sticky bar under the masthead: section links + Download */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: center;
+               gap: 16px; min-height: 58px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none;
+           color: var(--text); font-weight: 700; font-size: 19px; }
+  .brand img { width: 34px; height: 34px; }
+  nav.links { display: flex; gap: 26px; }
+  nav.links a { color: var(--muted); text-decoration: none; font-size: 16px; }
+  nav.links a:hover { color: var(--text); }
+  .top .cta-sm { white-space: nowrap; }
+  /* medium screens: fewer section links so the bar stays on one line */
+  @media (max-width: 1000px) { nav.links a[href="#how"] { display: none; } }
+  @media (max-width: 860px) { nav.links a[href="#privacy"] { display: none; } }
+  /* phones: just Download and the language picker (sections follow below) */
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+    .top .cta-sm { margin-inline-start: 0; }
+  }
+  .lang-pick { font: inherit; font-size: 14px; color: var(--text); background: var(--surface);
+               border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; max-width: 9.5em; }
+  .top .cta-sm { margin-inline-start: 10px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px; border-radius: 999px; font-weight: 650;
+    text-decoration: none; font-size: 16px; border: 1px solid transparent;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-strong); }
+  :root[data-theme="dark"] .btn-primary { color: #06292a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn-primary { color: #06292a; }
+  }
+  .btn-ghost { border-color: var(--line); color: var(--text); background: var(--surface); }
+  .btn-sm { padding: 8px 16px; font-size: 14px; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+
+  /* Hero */
+  .hero { padding: 56px 0 40px; }
+  .hero .wrap { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 900px) {
+    .hero { padding: 84px 0 64px; }
+    .hero .wrap { grid-template-columns: 1.1fr .9fr; gap: 56px; }
+  }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 650; letter-spacing: .06em;
+             text-transform: uppercase; color: var(--violet); background: var(--violet-soft);
+             padding: 5px 12px; border-radius: 999px; }
+  h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.06; letter-spacing: -.025em;
+       margin: 18px 0 18px; font-weight: 800; }
+  h1 .accent { background: linear-gradient(90deg, var(--teal), var(--violet));
+               -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
+
+  /* Day card (illustration) */
+  .day {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
+    box-shadow: var(--shadow); padding: 22px; max-width: 420px; width: 100%;
+    justify-self: center; position: relative;
+  }
+  .day::before {
+    content: ""; position: absolute; inset: -40px -30px auto auto; width: 220px; height: 220px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 28%, transparent), transparent 70%);
+    z-index: -1;
+  }
+  .day-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .day-head b { font-size: 17px; }
+  .day-head span { font-size: 13px; color: var(--muted); }
+  .ring-row { display: flex; align-items: center; gap: 18px; margin: 18px 0 16px; }
+  .ring { width: 132px; height: 132px; flex: none; }
+  .ring text { fill: var(--text); }
+  .ring .sub { fill: var(--muted); }
+  .legend { display: grid; gap: 10px; font-size: 14px; flex: 1; min-width: 0; }
+  .legend div { display: flex; align-items: center; gap: 8px; }
+  .legend i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .legend b { margin-inline-start: auto; font-variant-numeric: tabular-nums; }
+  .rows { border-top: 1px solid var(--line); padding-top: 10px; display: grid; }
+  .rows div { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14.5px;
+              color: var(--muted); }
+  .rows div b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .caption { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  section.alt { background: var(--surface-2); border-block: 1px solid var(--line); }
+  h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -.02em; line-height: 1.15; margin: 0 0 12px; }
+  .section-lead { color: var(--muted); max-width: 40em; margin: 0 0 36px; font-size: 18px; }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+          padding: 22px; }
+  .card h3 { margin: 12px 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+          background: color-mix(in srgb, var(--teal) 14%, transparent); color: var(--teal-strong); }
+  .icon.v { background: var(--violet-soft); color: var(--violet); }
+  .icon svg { width: 22px; height: 22px; }
+
+  /* Steps */
+  .steps { display: grid; gap: 16px; counter-reset: s; }
+  @media (min-width: 820px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { padding: 22px; border-radius: var(--radius); background: var(--surface);
+          border: 1px solid var(--line); counter-increment: s; }
+  .step::before { content: counter(s); display: grid; place-items: center; width: 34px; height: 34px;
+                  border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; }
+  .step h3 { margin: 14px 0 6px; font-size: 18px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  /* Privacy */
+  .privacy { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 860px) { .privacy { grid-template-columns: 1fr 1fr; gap: 48px; } }
+  .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .checks li { display: flex; gap: 12px; align-items: flex-start; background: var(--surface);
+               border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .checks svg { width: 22px; height: 22px; flex: none; color: var(--teal); margin-top: 2px; }
+  .checks b { display: block; }
+  .checks span { color: var(--muted); font-size: 15px; }
+
+  /* Languages */
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .langs a { color: var(--text); text-decoration: none; }
+  .langs a:hover { border-color: var(--teal); }
+  .langs a[aria-current] { border-color: var(--teal); background: var(--surface-2); font-weight: 650; }
+  .langs a { background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+                padding: 6px 14px; font-size: 15px; }
+
+  /* FAQ */
+  .faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 780px; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+            padding: 4px 18px; }
+  summary { cursor: pointer; font-weight: 600; padding: 12px 0; list-style: none;
+            display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 22px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 14px; color: var(--muted); }
+  details h3 { font-size: 16px; margin: 4px 0 8px; }
+  details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
+  details li { margin-bottom: 6px; }
+  .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
+  .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
+               border: 1px solid var(--line); }
+
+  /* Download */
+  .download { text-align: center; }
+  .download .box { background: linear-gradient(135deg, var(--teal), var(--violet));
+                   color: #fff; border-radius: 28px; padding: 48px 22px; }
+  .download h2 { color: #fff; }
+  .download p { color: rgba(255,255,255,.88); max-width: 36em; margin: 0 auto 26px; }
+  .download .btn { background: #fff; color: #0b4f50; }
+  .download .meta { font-size: 14px; margin: 18px auto 0; color: rgba(255,255,255,.8); }
+
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+  footer .brand { font-size: 16px; }
+  footer .brand img { width: 26px; height: 26px; }
+  footer nav { display: flex; gap: 18px; flex-wrap: wrap; margin-inline-start: auto; }
+  footer a { color: var(--muted); }
+</style>
+<style>
+  .policy { max-width: 760px; }
+  .policy h1 { font-size: clamp(30px, 5vw, 44px); margin: 0 0 8px; }
+  .policy .updated { color: var(--muted); margin: 0 0 28px; }
+  .policy h2 { font-size: clamp(21px, 3vw, 26px); margin: 36px 0 10px; }
+  .policy p, .policy li { line-height: 1.6; }
+  .policy ul { padding-inline-start: 22px; }
+  .policy li { margin: 6px 0; }
+  .policy a { color: var(--teal-strong); }
+  .top .brand { margin-inline-end: auto; color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="../bodyscope-icon.png?v=2" alt="" width="34" height="34">Bodyscope</a>
+    <select class="lang-pick" aria-label="Језик" onchange="bsLang(this.value)"><option value="en">English</option><option value="ar">العربية</option><option value="bg">Български</option><option value="zh">中文 (简体)</option><option value="nl">Nederlands</option><option value="fi">Suomi</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="hu">Magyar</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="nb">Norsk bokmål</option><option value="ro">Română</option><option value="ru">Русский</option><option value="sr" selected>Српски</option><option value="es">Español</option><option value="sv">Svenska</option><option value="yi">ייִדיש</option></select>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap policy">
+      <h1>Политика приватности</h1>
+      <p class="updated">Последње ажурирање: 5. новембар 2026.</p>
+      <p>Bodyscope је апликација Јаниса Цавеласа (Hyperlog). Укратко: оно што унесете остаје на вашем телефону. Нема налога, реклама ни аналитике, и немамо сервер који прикупља ваше податке. Ова страница објашњава оних неколико случајева када нешто напушта ваш телефон, и то само када користите ту функцију.</p>
+
+      <h2>Шта остаје на вашем телефону</h2>
+      <p>Ваш профил (на пример старост, пол, висина и тежина), ваши оброци и намирнице, ваши кораци, шетње и трчања са њиховим рутама, као и подешавања апликације, укључујући ваш Anthropic API кључ ако га додате, чувају се само у складишту апликације на вашем телефону. Ми их не видимо.</p>
+
+      <h2>Дозволе и зашто су апликацији потребне</h2>
+      <ul><li><b>Локација:</b> за бележење руте и раздаљине шетње или трчања, само док снимате. Android све време приказује обавештење.</li><li><b>Сензори покрета и рад у позадини:</b> за бројање ваших корака током целог дана, уз обавештење док је бројач корака укључен.</li><li><b>Обавештења:</b> за бројач корака и за шетње и трчања која се снимају.</li><li><b>Камера и фотографије:</b> само фотографија коју снимите или изаберете за „Оброк са фотографије“ или „Нова намирница са фотографије“. Апликација користи камеру и бирач фотографија самог Android-а, па не види друге фотографије.</li><li><b>Микрофон:</b> апликација га не тражи. Гласовна претрага користи говорну услугу вашег телефона (видите испод).</li><li><b>Складиште:</b> за упис и читање резервних копија и извоза на месту које изаберете.</li><li><b>Интернет:</b> само за функције из следећег одељка.</li></ul>
+
+      <h2>Шта напушта ваш телефон и када</h2>
+      <p>Ништа о вама се не шаље у позадини. Подаци напуштају телефон само када користите неку од ових функција:</p>
+      <ul><li><b>Претрага намирница на мрежи:</b> речи које тражите иду у USDA FoodData Central или Open Food Facts.</li><li><b>„Оброк са фотографије“ и „Нова намирница са фотографије“:</b> фотографија коју изаберете иде директно са вашег телефона компанији Anthropic, са вашим сопственим API кључем, а Claude, вештачка интелигенција компаније Anthropic, описује намирнице на њој. Anthropic је обрађује према сопственим условима и сопственој политици приватности и наплаћује је са вашег Anthropic налога. Између нема Bodyscope сервера и не чувамо копију.</li><li><b>Гласовна претрага:</b> када додирнете микрофон, услуга за препознавање говора на вашем телефону (често Google-ова) претвара ваше речи у текст.</li><li><b>Мапе:</b> мапе шетњи и трчања долазе са OpenStreetMap сервера плочица, који виде приказану област.</li><li><b>Провера ажурирања:</b> само у верзији преузетој са овог сајта или са GitHub-а, не и у верзији са Google Play-а. Апликација пита наш сервер за ажурирања за број најновије верзије; ништа о вама се не шаље уз то.</li><li>Као код сваке интернет везе, свака од ових услуга види и IP адресу вашег телефона.</li></ul>
+
+      <h2>Резервне копије</h2>
+      <p>Резервне копије су датотеке које апликација уписује у фасциклу коју изаберете: на телефону, на SD картици или у вашој фасцикли у облаку. Садрже све ваше податке и ваш Anthropic API кључ, па их чувајте приватно. Ми их никада не добијамо.</p>
+
+      <h2>Шта не радимо</h2>
+      <ul><li>Нема налога ни пријављивања.</li><li>Нема реклама, аналитике, праћења ни извештаја о падовима који се било где шаљу.</li><li>Не продајемо, не делимо и не примамо ваше податке, јер они никада не стижу до нас.</li></ul>
+
+      <h2>Брисање ваших података</h2>
+      <ul><li>Обришите појединачне записе у апликацији или обришите све помоћу <em>Враћање на фабричка подешавања</em> у менију (☰).</li><li>Деинсталирањем Bodyscope-а уклањају се сви његови подаци са телефона.</li><li>Резервне копије остају тамо где сте их сачували; обришите их сами.</li><li>Да бисте престали да користите свој Anthropic API кључ, уклоните га у Подешавањима и обришите га на <a href="https://console.anthropic.com">console.anthropic.com</a>.</li></ul>
+
+      <h2>Деца</h2>
+      <p>Bodyscope је намењен одраслима и није намењен деци млађој од 13 година. Не прикупљамо податке ни од кога, па ни од деце.</p>
+
+      <h2>Измене ове политике</h2>
+      <p>Ако се ова политика промени, нова верзија ће бити објављена на овој страници са новим датумом.</p>
+
+      <h2>Контакт</h2>
+      <p>Питања о приватности: <a href="mailto:bodyscope.team@gmail.com">bodyscope.team@gmail.com</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="../bodyscope-icon.png?v=2" alt="" width="26" height="26">Bodyscope</a>
+    <span>© <span id="yr">2026</span> Yannis Tzavellas · Hyperlog</span>
+    <nav aria-label="Подножје">
+      <a href="./#faq">Питања</a>
+      <a href="mailto:bodyscope.team@gmail.com">Контакт</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+<script>
+function bsLang(c) {
+  try { localStorage.setItem("bs-lang", c); } catch (e) {}
+  location.href = "../" + (c === "en" ? "" : c + "/") + "privacy.html" + location.hash;
+}
+document.querySelectorAll(".langs a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    try { localStorage.setItem("bs-lang", a.dataset.lang); } catch (e) {}
+  });
+});
+</script>
+</body>
+</html>

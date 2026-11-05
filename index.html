@@ -46,7 +46,7 @@
     }
   }
   if (pick && pick !== "en" && L.indexOf(pick) >= 0)
-    location.replace(pick + "/" + location.hash);
+    location.replace(pick + "/" + "" + location.hash);
 })();
 </script>
 <link rel="icon" type="image/png" href="bodyscope-icon.png?v=2">
@@ -457,6 +457,7 @@
         <h2>Your data stays on your phone</h2>
         <p class="section-lead" style="margin-bottom:0">Bodyscope works on your device. There is no account to create and nothing hidden
           that sends your profile, meals or activities to a server.</p>
+        <p style="margin:14px 0 0"><a href="privacy.html">Privacy policy</a></p>
       </div>
       <ul class="checks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
@@ -585,7 +586,7 @@
     <a class="brand" href="#"><img src="bodyscope-icon.png?v=2" alt="" width="26" height="26">Bodyscope</a>
     <span>© <span id="yr">2026</span> Yannis Tzavellas · Hyperlog</span>
     <nav aria-label="Footer">
-      <a href="#privacy">Privacy</a>
+      <a href="privacy.html">Privacy policy</a>
       <a href="#faq">FAQ</a>
       <a href="mailto:bodyscope.team@gmail.com">Contact</a>
     </nav>
@@ -605,7 +606,7 @@
 <script>
 function bsLang(c) {
   try { localStorage.setItem("bs-lang", c); } catch (e) {}
-  location.href = "" + (c === "en" ? "" : c + "/") + location.hash;
+  location.href = "" + (c === "en" ? "" : c + "/") + "" + location.hash;
 }
 document.querySelectorAll(".langs a").forEach(function (a) {
   a.addEventListener("click", function () {

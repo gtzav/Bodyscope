@@ -434,6 +434,7 @@
       <div>
         <h2>Deine Daten bleiben auf deinem Handy</h2>
         <p class="section-lead" style="margin-bottom:0">Bodyscope arbeitet auf deinem Gerät. Es gibt kein Konto und nichts Verstecktes, das dein Profil, deine Mahlzeiten oder Aktivitäten an einen Server schickt.</p>
+        <p style="margin:14px 0 0"><a href="privacy.html">Datenschutzerklärung</a></p>
       </div>
       <ul class="checks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
@@ -562,7 +563,7 @@
     <a class="brand" href="#"><img src="../bodyscope-icon.png?v=2" alt="" width="26" height="26">Bodyscope</a>
     <span>© <span id="yr">2026</span> Yannis Tzavellas · Hyperlog</span>
     <nav aria-label="Fußzeile">
-      <a href="#privacy">Datenschutz</a>
+      <a href="privacy.html">Datenschutzerklärung</a>
       <a href="#faq">FAQ</a>
       <a href="mailto:bodyscope.team@gmail.com">Kontakt</a>
     </nav>
@@ -582,7 +583,7 @@
 <script>
 function bsLang(c) {
   try { localStorage.setItem("bs-lang", c); } catch (e) {}
-  location.href = "../" + (c === "en" ? "" : c + "/") + location.hash;
+  location.href = "../" + (c === "en" ? "" : c + "/") + "" + location.hash;
 }
 document.querySelectorAll(".langs a").forEach(function (a) {
   a.addEventListener("click", function () {
