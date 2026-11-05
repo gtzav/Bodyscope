@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Πώς προσθέτω μια νέα τροφή;</summary>
           <p>Υπάρχουν δύο τρόποι. Και με τους δύο, η τροφή προστίθεται στο αρχείο τροφών, έτοιμη για όλα σας τα γεύματα.</p>
+          <p class="note">Οι εικόνες τραβήχτηκαν με την εφαρμογή ρυθμισμένη στα αγγλικά. Στη γλώσσα σας, τα μενού και τα ονόματα των τροφών εμφανίζονται στη γλώσσα σας.</p>
           <h3>1. Απευθείας, στο αρχείο τροφών</h3>
           <ol><li>Ανοίξτε το μενού (☰) και, στην ενότητα <em>Διαχείριση αρχείων</em>, πατήστε <em>Τροφές</em>.</li><li>Πατήστε ⋮ πάνω δεξιά και επιλέξτε <em>Προσθήκη καταχώρησης</em>.</li><li>Συμπληρώστε το όνομα της τροφής, μια ποσότητα και τη μονάδα της (για παράδειγμα 100 gr ή 1 φέτα), καθώς και τους υδατάνθρακες, τις πρωτεΐνες, τα λιπαρά και τις θερμίδες αυτής της ποσότητας. Πατήστε <em>Αποδοχή</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>Οι εικόνες δείχνουν την εφαρμογή στα αγγλικά.</p>
         </details>
         <details id="photo-meal">
           <summary>Πώς λειτουργούν το «Γεύμα από φωτογραφία» και η «Νέα τροφή από φωτογραφία»;</summary>

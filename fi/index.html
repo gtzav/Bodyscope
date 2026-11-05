@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Miten lisään uuden ruoan?</summary>
           <p>Tapoja on kaksi. Kummallakin ruoka lisätään ruokatiedostoon, valmiiksi kaikkia aterioita varten.</p>
+          <p class="note">Kuvakaappaukset on otettu sovelluksen ollessa englanniksi. Omalla kielelläsi valikot ja ruokien nimet näkyvät suomeksi.</p>
           <h3>1. Suoraan ruokatiedostoon</h3>
           <ol><li>Avaa valikko (☰) ja napauta kohdassa <em>Tiedostojen hallinta</em> <em>Ruoat</em>.</li><li>Napauta oikeasta yläkulmasta ⋮ ja valitse <em>Lisää tietue</em>.</li><li>Anna ruoan nimi, määrä ja sen yksikkö (esimerkiksi 100 gr tai 1 viipale) sekä tämän määrän hiilihydraatit, proteiinit, rasvat ja kalorit. Napauta <em>Hyväksy</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>Kuvakaappaukset näyttävät sovelluksen englanniksi.</p>
         </details>
         <details id="photo-meal">
           <summary>Miten ”Ateria kuvasta” ja ”Uusi ruoka kuvasta” toimivat?</summary>

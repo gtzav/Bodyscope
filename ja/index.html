@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>新しい食品を追加するには?</summary>
           <p>方法は2つあります。どちらの方法でも食品は食品ファイルに追加され、すべての食事で使えます。</p>
+          <p class="note">画面写真はアプリを英語に設定して撮影したものです。日本語に設定すると、メニューも食品名も日本語で表示されます。</p>
           <h3>1. 食品ファイルに直接追加する</h3>
           <ol><li>メニュー(☰)を開き、<em>ファイルの管理</em> の <em>食品</em> をタップします。</li><li>右上の ⋮ をタップし、<em>レコードを追加</em> を選びます。</li><li>食品名、量とその単位(例: 100 gr、1 切れ)、その量の炭水化物・たんぱく質・脂質・カロリーを入力し、<em>同意する</em> をタップします。</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>画面写真は英語表示のアプリです。</p>
         </details>
         <details id="photo-meal">
           <summary>「写真から食事」と「写真から新しい食品」はどのように動きますか？</summary>

@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Как добавить новый продукт?</summary>
           <p>Есть два способа. В обоих продукт добавляется в файл продуктов и становится доступен для всех приёмов пищи.</p>
+          <p class="note">Снимки экрана сделаны с приложением на английском языке. На вашем языке меню и названия продуктов отображаются по-русски.</p>
           <h3>1. Напрямую, в файле продуктов</h3>
           <ol><li>Откройте меню (☰) и в разделе <em>Управление файлами</em> нажмите <em>Продукты</em>.</li><li>Нажмите ⋮ в правом верхнем углу и выберите <em>Добавить запись</em>.</li><li>Введите название продукта, количество и его единицу (например, 100 gr или 1 ломтик), а также углеводы, белки, жиры и калории этого количества. Нажмите <em>Принять</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>На снимках экрана приложение на английском языке.</p>
         </details>
         <details id="photo-meal">
           <summary>Как работают «Приём пищи по фото» и «Новый продукт по фото»?</summary>

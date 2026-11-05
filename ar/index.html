@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>كيف أضيف طعامًا جديدًا؟</summary>
           <p>هناك طريقتان. في كلتيهما يُضاف الطعام إلى ملف الأطعمة، جاهزًا لكل وجباتك.</p>
+          <p class="note">التُقطت لقطات الشاشة والتطبيق مضبوط على اللغة الإنجليزية. بلغتك تظهر القوائم وأسماء الأطعمة باللغة العربية.</p>
           <h3>1. مباشرةً، في ملف الأطعمة</h3>
           <ol><li>افتح القائمة (☰)، ثم ضمن <em>إدارة الملفات</em> اضغط <em>الأطعمة</em>.</li><li>اضغط ⋮ في الأعلى واختر <em>إضافة سجل</em>.</li><li>أدخل اسم الطعام وكمية ووحدتها (مثلًا 100 gr أو شريحة واحدة)، والكربوهيدرات والبروتينات والدهون والسعرات لتلك الكمية. اضغط <em>قبول</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>تُظهر لقطات الشاشة التطبيق باللغة الإنجليزية.</p>
         </details>
         <details id="photo-meal">
           <summary>كيف تعمل ميزتا «وجبة من صورة» و«طعام جديد من صورة»؟</summary>

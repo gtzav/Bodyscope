@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Как да добавя нова храна?</summary>
           <p>Има два начина. И при двата храната се добавя във файла с храни, готова за всички ваши хранения.</p>
+          <p class="note">Екранните снимки са направени с приложението на английски. На вашия език менютата и имената на храните се показват на български.</p>
           <h3>1. Директно, във файла с храни</h3>
           <ol><li>Отворете менюто (☰) и в <em>Управление на файлове</em> докоснете <em>Храни</em>.</li><li>Докоснете ⋮ горе вдясно и изберете <em>Добавяне на запис</em>.</li><li>Въведете името на храната, количество и мерната му единица (например 100 gr или 1 филия), както и въглехидратите, белтъчините, мазнините и калориите на това количество. Докоснете <em>Приемане</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>Екранните снимки показват приложението на английски.</p>
         </details>
         <details id="photo-meal">
           <summary>Как работят „Хранене от снимка“ и „Нова храна от снимка“?</summary>

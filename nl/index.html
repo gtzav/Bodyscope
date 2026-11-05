@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Hoe voeg ik een nieuw voedingsmiddel toe?</summary>
           <p>Er zijn twee manieren. In beide gevallen komt het voedingsmiddel in het voedingsbestand, klaar voor al je maaltijden.</p>
+          <p class="note">De schermafbeeldingen zijn gemaakt met de app in het Engels. In jouw taal verschijnen de menu's en de namen van de voedingsmiddelen in het Nederlands.</p>
           <h3>1. Rechtstreeks, in het voedingsbestand</h3>
           <ol><li>Open het menu (☰) en tik onder <em>Bestandsbeheer</em> op <em>Voedingsmiddelen</em>.</li><li>Tik rechtsboven op ⋮ en kies <em>Record toevoegen</em>.</li><li>Vul de naam in, een hoeveelheid en de eenheid ervan (bijvoorbeeld 100 gr, of 1 plak), en de koolhydraten, eiwitten, vetten en calorieën van die hoeveelheid. Tik op <em>Accepteren</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>De schermafbeeldingen tonen de app in het Engels.</p>
         </details>
         <details id="photo-meal">
           <summary>Hoe werken ‘Maaltijd via foto’ en ‘Nieuw voedingsmiddel via foto’?</summary>

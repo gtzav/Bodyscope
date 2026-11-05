@@ -285,6 +285,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -532,6 +533,7 @@
         <details id="add-food">
           <summary>How do I add a new food?</summary>
           <p>There are two ways. Either way, the food is added to the food file, ready for all your meals.</p>
+          <p class="note">The screenshots were taken with the app set to English. In your language, the menus and the food names appear in your language.</p>
           <h3>1. Directly, in the food file</h3>
           <ol><li>Open the menu (☰) and, under <em>Files administration</em>, tap <em>Foods</em>.</li><li>Tap ⋮ at the top right and choose <em>Add record</em>.</li><li>Enter the food's name, a quantity and its unit (for example 100 gr, or 1 slice), and the carbohydrates, proteins, fats and calories of that quantity. Tap <em>Accept</em>.</li></ol>
           <div class="shots">
@@ -546,7 +548,6 @@
             <img src="img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>The screenshots show the app in English.</p>
         </details>
         <details id="photo-meal">
           <summary>How do “Meal from photo” and “New food from photo” work?</summary>

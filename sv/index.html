@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Hur lägger jag till ett nytt livsmedel?</summary>
           <p>Det finns två sätt. På båda sätten läggs livsmedlet till i livsmedelsfilen, redo för alla dina måltider.</p>
+          <p class="note">Skärmbilderna är tagna med appen på engelska. På ditt språk visas menyerna och livsmedlens namn på svenska.</p>
           <h3>1. Direkt, i livsmedelsfilen</h3>
           <ol><li>Öppna menyn (☰) och tryck på <em>Livsmedel</em> under <em>Filhantering</em>.</li><li>Tryck på ⋮ uppe till höger och välj <em>Lägg till post</em>.</li><li>Ange namnet, en mängd och dess enhet (till exempel 100 gr eller 1 skiva) samt kolhydrater, protein, fett och kalorier för den mängden. Tryck på <em>Godkänn</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>Skärmbilderna visar appen på engelska.</p>
         </details>
         <details id="photo-meal">
           <summary>Hur fungerar ”Måltid från foto” och ”Nytt livsmedel från foto”?</summary>

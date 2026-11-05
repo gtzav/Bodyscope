@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>如何添加新食物?</summary>
           <p>有两种方法。无论哪种,食物都会加入食物文件,可用于您所有的餐食。</p>
+          <p class="note">截图是在应用设为英文时拍摄的。设为中文时，菜单和食物名称都会以中文显示。</p>
           <h3>1. 直接在食物文件中添加</h3>
           <ol><li>打开菜单(☰),在“<em>文件管理</em>”下点按“<em>食物</em>”。</li><li>点按右上角的 ⋮,选择“<em>添加记录</em>”。</li><li>输入食物名称、数量及其单位(例如 100 gr 或 1 片),以及该数量的碳水化合物、蛋白质、脂肪和热量。点按“<em>接受</em>”。</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>截图显示的是英文界面的应用。</p>
         </details>
         <details id="photo-meal">
           <summary>“拍照记餐”和“拍照新建食物”是如何工作的？</summary>

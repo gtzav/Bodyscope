@@ -266,6 +266,7 @@
   details h3 { font-size: 16px; margin: 4px 0 8px; }
   details ol { margin: 0 0 14px; padding-inline-start: 1.4em; color: var(--muted); }
   details li { margin-bottom: 6px; }
+  details p.note { font-size: 14px; font-style: italic; border-inline-start: 3px solid var(--line); padding-inline-start: 10px; }
   .shots { display: flex; gap: 10px; overflow-x: auto; margin: 0 0 18px; padding-bottom: 6px; }
   .shots img { flex: none; width: 160px; height: auto; border-radius: 12px;
                border: 1px solid var(--line); }
@@ -509,6 +510,7 @@
         <details id="add-food">
           <summary>Cum adaug un aliment nou?</summary>
           <p>Există două moduri. În ambele, alimentul este adăugat în fișierul de alimente, gata pentru toate mesele.</p>
+          <p class="note">Capturile de ecran au fost făcute cu aplicația în engleză. În limba ta, meniurile și numele alimentelor apar în română.</p>
           <h3>1. Direct, în fișierul de alimente</h3>
           <ol><li>Deschideți meniul (☰) și, la <em>Administrarea fișierelor</em>, atingeți <em>Alimente</em>.</li><li>Atingeți ⋮ din dreapta sus și alegeți <em>Adăugați înregistrare</em>.</li><li>Introduceți numele alimentului, o cantitate și unitatea ei (de exemplu 100 gr sau 1 felie), precum și carbohidrații, proteinele, grăsimile și caloriile acelei cantități. Atingeți <em>Acceptați</em>.</li></ol>
           <div class="shots">
@@ -523,7 +525,6 @@
             <img src="../img/faq-food-5.webp" width="360" height="718" loading="lazy" alt="Compose meal: ingredients selected, menu with Create composite food from selected">
             <img src="../img/faq-food-6.webp" width="360" height="718" loading="lazy" alt="The composite food's name">
           </div>
-          <p>Capturile de ecran arată aplicația în engleză.</p>
         </details>
         <details id="photo-meal">
           <summary>Cum funcționează „Masă din fotografie” și „Aliment nou din fotografie”?</summary>
