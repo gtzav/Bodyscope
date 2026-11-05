@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Repas et aliments</h3>
-          <p>Composez vos repas à partir d'une liste de départ d'environ 900 aliments, ou cherchez dans les bases USDA et Open Food Facts. Calories et nutriments sont additionnés pour vous. Ou photographiez votre assiette et laissez Claude AI reconnaître les aliments (<a href="#photo-meal">votre propre clé est nécessaire</a>).</p>
+          <p>Composez vos repas à partir d'une liste de départ d'environ 900 aliments, ou cherchez dans les bases USDA et Open Food Facts. Calories et nutriments sont additionnés pour vous. Ou photographiez votre assiette et laissez Claude AI reconnaître les aliments, ou enregistrez l'assiette entière comme nouvel aliment (<a href="#photo-meal">votre propre clé est nécessaire</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -525,10 +525,12 @@
           <p>Les captures d'écran montrent l'application en anglais.</p>
         </details>
         <details id="photo-meal">
-          <summary>Comment fonctionne « Repas en photo » ?</summary>
-          <p>Bodyscope peut reconnaître les aliments de votre assiette à partir d'une photo, grâce à Claude, l'IA d'Anthropic. C'est facultatif et cela nécessite votre propre clé API Anthropic.</p>
+          <summary>Comment fonctionnent « Repas en photo » et « Nouvel aliment en photo » ?</summary>
+          <p>Bodyscope peut reconnaître les aliments de votre assiette à partir d'une photo, grâce à Claude, l'IA d'Anthropic. C'est facultatif et cela nécessite votre propre clé API Anthropic. Il peut ajouter les aliments reconnus à un repas, ou enregistrer l'assiette entière comme un nouvel aliment dans votre fichier d'aliments.</p>
           <h3>Utilisation</h3>
-          <ol><li>Dans <em>Repas de jour</em>, touchez le bouton en bas à droite et choisissez <em>Ajouter les détails du repas</em>.</li><li>Touchez le bouton appareil photo (<em>Repas en photo</em>) et choisissez <em>Prendre une photo</em> ou <em>Choisir dans la galerie</em>.</li><li>Claude liste les aliments qu'il voit, avec leur poids et leurs calories estimés. Décochez ce qui est faux et touchez <em>Ajouter au repas</em>.</li><li>Touchez un aliment du repas pour corriger sa quantité, puis enregistrez le repas comme d'habitude.</li></ol>
+          <ol><li>Dans <em>Repas de jour</em>, touchez le bouton en bas à droite et choisissez <em>Ajouter les détails du repas</em>.</li><li>Touchez le bouton avec + et un appareil photo (<em>Repas en photo</em>) et choisissez <em>Prendre une photo</em> ou <em>Choisir dans la galerie</em>.</li><li>Claude liste les aliments qu'il voit, avec leur poids et leurs calories estimés. Décochez ce qui est faux et touchez <em>Ajouter au repas</em>.</li><li>Touchez un aliment du repas pour corriger sa quantité, puis enregistrez le repas comme d'habitude.</li></ol>
+          <h3>Enregistrer une assiette comme nouvel aliment</h3>
+          <ol><li>Ouvrez le menu (☰), allez dans <em>Gestion des fichiers › Aliments</em>, touchez le bouton appareil photo à côté de la recherche (<em>Nouvel aliment en photo</em>) et prenez ou choisissez une photo.</li><li>Décochez ce qui est faux et touchez <em>Continuer</em>.</li><li>Choisissez <em>Une portion</em> (l'assiette entière, par exemple environ 700 g) ou <em>Pour 100 g</em>.</li><li>Vérifiez le nom, la quantité, l'unité et les valeurs, puis touchez <em>Accepter</em>. Si vous changez la quantité, les valeurs changent en proportion ; décochez <em>Modifier les valeurs en proportion</em> pour ne changer que la quantité.</li><li>L'assiette est désormais un aliment comme les autres : ajoutez-la à vos repas sans nouvelle photo ni nouveau coût.</li></ol>
           <h3>Obtenir une clé</h3>
           <ol><li>Créez un compte sur <a href="https://console.anthropic.com">console.anthropic.com</a> et achetez un peu de crédit.</li><li>Créez une clé API et copiez-la.</li><li>Dans Bodyscope, ouvrez le menu (☰), allez dans <em>Paramètres › Ajustements alimentaires</em>, touchez <em>Votre clé API Claude</em> et collez-la.</li></ol>
           <h3>Coût et confidentialité</h3>

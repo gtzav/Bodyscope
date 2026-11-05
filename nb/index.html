@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Måltider og matvarer</h3>
-          <p>Sett sammen måltidene dine fra en startliste med rundt 900 matvarer, eller søk i databasene til USDA og Open Food Facts. Kalorier og næringsstoffer legges sammen for deg. Eller ta bilde av tallerkenen og la Claude AI gjenkjenne maten (<a href="#photo-meal">krever egen nøkkel</a>).</p>
+          <p>Sett sammen måltidene dine fra en startliste med rundt 900 matvarer, eller søk i databasene til USDA og Open Food Facts. Kalorier og næringsstoffer legges sammen for deg. Eller ta bilde av tallerkenen og la Claude AI gjenkjenne maten, eller lagre hele tallerkenen som en ny matvare (<a href="#photo-meal">krever egen nøkkel</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -525,10 +525,12 @@
           <p>Skjermbildene viser appen på engelsk.</p>
         </details>
         <details id="photo-meal">
-          <summary>Hvordan fungerer «Måltid fra bilde»?</summary>
-          <p>Bodyscope kan gjenkjenne maten på tallerkenen din fra et bilde, med Claude, KI-en fra Anthropic. Dette er valgfritt og krever din egen API-nøkkel fra Anthropic.</p>
+          <summary>Hvordan fungerer «Måltid fra bilde» og «Ny matvare fra bilde»?</summary>
+          <p>Bodyscope kan gjenkjenne maten på tallerkenen din fra et bilde, med Claude, KI-en fra Anthropic. Dette er valgfritt og krever din egen API-nøkkel fra Anthropic. Den kan legge maten den finner til et måltid, eller lagre hele tallerkenen som én ny matvare i matvarefilen din.</p>
           <h3>Slik bruker du det</h3>
-          <ol><li>I <em>Dagens måltider</em> trykker du på knappen nederst til høyre og velger <em>Legg til måltidsdetaljer</em>.</li><li>Trykk på kameraknappen (<em>Måltid fra bilde</em>) og velg <em>Ta et bilde</em> eller <em>Velg fra galleriet</em>.</li><li>Claude lister opp maten den ser, med anslått vekt og kalorier. Fjern haken ved det som er feil, og trykk på <em>Legg til i måltidet</em>.</li><li>Trykk på en matvare i måltidet for å rette mengden, og lagre måltidet som vanlig.</li></ol>
+          <ol><li>I <em>Dagens måltider</em> trykker du på knappen nederst til høyre og velger <em>Legg til måltidsdetaljer</em>.</li><li>Trykk på knappen med + og kamera (<em>Måltid fra bilde</em>) og velg <em>Ta et bilde</em> eller <em>Velg fra galleriet</em>.</li><li>Claude lister opp maten den ser, med anslått vekt og kalorier. Fjern haken ved det som er feil, og trykk på <em>Legg til i måltidet</em>.</li><li>Trykk på en matvare i måltidet for å rette mengden, og lagre måltidet som vanlig.</li></ol>
+          <h3>Lagre en tallerken som ny matvare</h3>
+          <ol><li>Åpne menyen (☰), gå til <em>Filadministrasjon › Matvarer</em>, trykk på kameraknappen ved siden av søket (<em>Ny matvare fra bilde</em>) og ta eller velg et bilde.</li><li>Fjern haken ved det som er feil, og trykk på <em>Fortsett</em>.</li><li>Velg <em>Én porsjon</em> (hele tallerkenen, for eksempel omtrent 700 g) eller <em>Per 100 g</em>.</li><li>Sjekk navn, mengde, enhet og verdier, og trykk på <em>Godta</em>. Når du endrer mengden, endres verdiene forholdsmessig; fjern haken ved <em>Endre verdiene forholdsmessig</em> for å endre bare mengden.</li><li>Tallerkenen er nå en matvare som alle andre: legg den til måltidene dine uten nytt bilde og uten ny kostnad.</li></ol>
           <h3>Slik får du en nøkkel</h3>
           <ol><li>Opprett en konto på <a href="https://console.anthropic.com">console.anthropic.com</a> og kjøp litt kreditt.</li><li>Opprett en API-nøkkel og kopier den.</li><li>Åpne menyen (☰) i Bodyscope, gå til <em>Innstillinger › Matinnstillinger</em>, trykk på <em>Din Claude API-nøkkel</em> og lim den inn.</li></ol>
           <h3>Kostnad og personvern</h3>

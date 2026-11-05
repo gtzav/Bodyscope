@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>餐食与食物</h3>
-          <p>从约 900 种食物的初始列表中搭配餐食，或搜索 USDA 和 Open Food Facts 数据库。热量和营养素会自动为你累加。也可以拍下你的餐盘，让 Claude AI 识别其中的食物（<a href="#photo-meal">需要你自己的密钥</a>）。</p>
+          <p>从约 900 种食物的初始列表中搭配餐食，或搜索 USDA 和 Open Food Facts 数据库。热量和营养素会自动为你累加。也可以拍下你的餐盘，让 Claude AI 识别其中的食物，或将整盘保存为新的食物（<a href="#photo-meal">需要你自己的密钥</a>）。</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -525,10 +525,12 @@
           <p>截图显示的是英文界面的应用。</p>
         </details>
         <details id="photo-meal">
-          <summary>“拍照记餐”是如何工作的？</summary>
-          <p>Bodyscope 可以借助 Anthropic 的人工智能 Claude，从照片中识别你盘中的食物。此功能为可选功能，需要你自己的 Anthropic API 密钥。</p>
+          <summary>“拍照记餐”和“拍照新建食物”是如何工作的？</summary>
+          <p>Bodyscope 可以借助 Anthropic 的人工智能 Claude，从照片中识别你盘中的食物。此功能为可选功能，需要你自己的 Anthropic API 密钥。它可以把识别出的食物加入一餐，也可以把整盘保存为食物文件中的一种新食物。</p>
           <h3>使用方法</h3>
-          <ol><li>在“<em>当日餐食</em>”中,点按右下角的按钮,选择“<em>添加餐食详情</em>”。</li><li>点按相机按钮（<em>拍照记餐</em>），然后选择“<em>拍照</em>”或“<em>从相册选择</em>”。</li><li>Claude 会列出它看到的食物，并附上估计的重量和热量。取消勾选错误的项目，然后点按“<em>添加到餐食</em>”。</li><li>点按餐中的食物即可更正其分量，然后像平常一样保存餐食。</li></ol>
+          <ol><li>在“<em>当日餐食</em>”中,点按右下角的按钮,选择“<em>添加餐食详情</em>”。</li><li>点按带有 + 和相机的按钮（<em>拍照记餐</em>），然后选择“<em>拍照</em>”或“<em>从相册选择</em>”。</li><li>Claude 会列出它看到的食物，并附上估计的重量和热量。取消勾选错误的项目，然后点按“<em>添加到餐食</em>”。</li><li>点按餐中的食物即可更正其分量，然后像平常一样保存餐食。</li></ol>
+          <h3>将一盘菜保存为新食物</h3>
+          <ol><li>打开菜单（☰），进入“<em>文件管理 › 食物</em>”，点按搜索框旁的相机按钮（<em>拍照新建食物</em>），然后拍照或选择照片。</li><li>取消勾选错误的项目，然后点按“<em>继续</em>”。</li><li>选择“<em>一份</em>”（整盘，例如约 700 克）或“<em>每 100 克</em>”。</li><li>检查名称、数量、单位和各项数值，然后点按“<em>接受</em>”。更改数量时，各项数值会按比例变化；如只想更改数量，请取消勾选“<em>按比例更改数值</em>”。</li><li>这盘菜现在和其他食物一样：无需新照片、也无需新费用，即可加入你的餐食。</li></ol>
           <h3>获取密钥</h3>
           <ol><li>在 <a href="https://console.anthropic.com">console.anthropic.com</a> 创建账户并购买一些额度。</li><li>创建一个 API 密钥并复制。</li><li>在 Bodyscope 中打开菜单（☰），进入“<em>设置 › 饮食设置</em>”，点按“<em>您的 Claude API 密钥</em>”并粘贴。</li></ol>
           <h3>费用与隐私</h3>

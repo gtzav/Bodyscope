@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>食事と食品</h3>
-          <p>約 900 品目の初期リストから食事を組み立てるか、USDA と Open Food Facts のデータベースを検索できます。カロリーと栄養素は自動で合計されます。お皿を撮影すれば、Claude AI が食品を認識することもできます（<a href="#photo-meal">ご自身のキーが必要</a>）。</p>
+          <p>約 900 品目の初期リストから食事を組み立てるか、USDA と Open Food Facts のデータベースを検索できます。カロリーと栄養素は自動で合計されます。お皿を撮影すれば、Claude AI が食品を認識したり、お皿全体を新しい食品として保存したりもできます（<a href="#photo-meal">ご自身のキーが必要</a>）。</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -525,10 +525,12 @@
           <p>画面写真は英語表示のアプリです。</p>
         </details>
         <details id="photo-meal">
-          <summary>「写真から食事」はどのように動きますか？</summary>
-          <p>Bodyscope は、Anthropic の AI である Claude を使って、写真からお皿の食品を認識できます。この機能は任意で、ご自身の Anthropic API キーが必要です。</p>
+          <summary>「写真から食事」と「写真から新しい食品」はどのように動きますか？</summary>
+          <p>Bodyscope は、Anthropic の AI である Claude を使って、写真からお皿の食品を認識できます。この機能は任意で、ご自身の Anthropic API キーが必要です。認識した食品を食事に追加することも、お皿全体を 1 つの新しい食品として食品ファイルに保存することもできます。</p>
           <h3>使い方</h3>
-          <ol><li><em>1日の食事</em> で右下のボタンをタップし、<em>食事の詳細を追加</em> を選びます。</li><li>カメラボタン（<em>写真から食事</em>）をタップし、<em>写真を撮る</em> または <em>ギャラリーから選ぶ</em> を選びます。</li><li>Claude が見つけた食品を、推定の重さとカロリー付きで一覧にします。間違っているもののチェックを外し、<em>食事に追加</em> をタップします。</li><li>食事内の食品をタップして量を修正し、いつもどおり食事を保存します。</li></ol>
+          <ol><li><em>1日の食事</em> で右下のボタンをタップし、<em>食事の詳細を追加</em> を選びます。</li><li>+ とカメラのボタン（<em>写真から食事</em>）をタップし、<em>写真を撮る</em> または <em>ギャラリーから選ぶ</em> を選びます。</li><li>Claude が見つけた食品を、推定の重さとカロリー付きで一覧にします。間違っているもののチェックを外し、<em>食事に追加</em> をタップします。</li><li>食事内の食品をタップして量を修正し、いつもどおり食事を保存します。</li></ol>
+          <h3>お皿を新しい食品として保存する</h3>
+          <ol><li>メニュー（☰）を開き、<em>ファイルの管理 › 食品</em> に進み、検索の横にあるカメラボタン（<em>写真から新しい食品</em>）をタップして、写真を撮るか選びます。</li><li>間違っているものはチェックを外し、<em>続ける</em> をタップします。</li><li><em>1人前</em>（お皿全体。たとえば約 700 g）または <em>100 g あたり</em> を選びます。</li><li>名前、量、単位、各値を確認し、<em>同意する</em> をタップします。量を変えると値も比例して変わります。量だけを変えたいときは <em>値を比例して変更</em> のチェックを外してください。</li><li>これでお皿はほかの食品と同じように使えます。新しい写真も追加の費用もなしで食事に追加できます。</li></ol>
           <h3>キーの入手方法</h3>
           <ol><li><a href="https://console.anthropic.com">console.anthropic.com</a> でアカウントを作成し、クレジットを購入します。</li><li>API キーを作成してコピーします。</li><li>Bodyscope でメニュー（☰）を開き、<em>設定 › 食事の設定</em> で <em>Claude APIキー</em> をタップして貼り付けます。</li></ol>
           <h3>料金とプライバシー</h3>

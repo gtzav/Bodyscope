@@ -384,7 +384,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Meals and foods</h3>
-          <p>Build your meals from a starting list of about 900 foods, or search the USDA and Open Food Facts databases. Calories and nutrients are added up for you. Or photograph your plate and let Claude AI recognise the foods (<a href="#photo-meal">needs your own key</a>).</p>
+          <p>Build your meals from a starting list of about 900 foods, or search the USDA and Open Food Facts databases. Calories and nutrients are added up for you. Or photograph your plate and let Claude AI recognise the foods, or save the whole plate as a new food (<a href="#photo-meal">needs your own key</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -548,10 +548,12 @@
           <p>The screenshots show the app in English.</p>
         </details>
         <details id="photo-meal">
-          <summary>How does “Meal from photo” work?</summary>
-          <p>Bodyscope can recognise the foods on your plate from a photo, using Claude, the AI by Anthropic. This is optional and needs your own Anthropic API key.</p>
+          <summary>How do “Meal from photo” and “New food from photo” work?</summary>
+          <p>Bodyscope can recognise the foods on your plate from a photo, using Claude, the AI by Anthropic. This is optional and needs your own Anthropic API key. It can add the foods it finds to a meal, or save the whole plate as one new food in your food file.</p>
           <h3>Using it</h3>
-          <ol><li>On <em>Day meals</em>, tap the button at the bottom right and choose <em>Add meal details</em>.</li><li>Tap the camera button (<em>Meal from photo</em>) and choose <em>Take a photo</em> or <em>Choose from gallery</em>.</li><li>Claude lists the foods it sees, with estimated weight and calories. Untick anything wrong and tap <em>Add to meal</em>.</li><li>Tap a food in the meal to correct its quantity, then save the meal as usual.</li></ol>
+          <ol><li>On <em>Day meals</em>, tap the button at the bottom right and choose <em>Add meal details</em>.</li><li>Tap the button with + and a camera (<em>Meal from photo</em>) and choose <em>Take a photo</em> or <em>Choose from gallery</em>.</li><li>Claude lists the foods it sees, with estimated weight and calories. Untick anything wrong and tap <em>Add to meal</em>.</li><li>Tap a food in the meal to correct its quantity, then save the meal as usual.</li></ol>
+          <h3>Saving a plate as a new food</h3>
+          <ol><li>Open the menu (☰), go to <em>Files administration › Foods</em>, tap the camera button next to search (<em>New food from photo</em>) and take or choose a photo.</li><li>Untick anything wrong and tap <em>Continue</em>.</li><li>Choose <em>One portion</em> (the whole plate, for example about 700 g) or <em>Per 100 g</em>.</li><li>Check the name, quantity, unit and values, and tap <em>Accept</em>. Changing the quantity changes the values in proportion; untick <em>Change the values in proportion</em> to change only the quantity.</li><li>The plate is now a food like any other: add it to your meals without a new photo, and without a new cost.</li></ol>
           <h3>Getting a key</h3>
           <ol><li>Create an account at <a href="https://console.anthropic.com">console.anthropic.com</a> and buy some credit.</li><li>Create an API key and copy it.</li><li>In Bodyscope, open the menu (☰), go to <em>Settings › Food adjustments</em>, tap <em>Your Claude API key</em> and paste it.</li></ol>
           <h3>Cost and privacy</h3>

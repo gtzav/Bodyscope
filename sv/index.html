@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Måltider och livsmedel</h3>
-          <p>Bygg dina måltider från en startlista med cirka 900 livsmedel, eller sök i databaserna från USDA och Open Food Facts. Kalorier och näringsämnen räknas ihop åt dig. Eller fotografera tallriken och låt Claude AI känna igen maten (<a href="#photo-meal">kräver en egen nyckel</a>).</p>
+          <p>Bygg dina måltider från en startlista med cirka 900 livsmedel, eller sök i databaserna från USDA och Open Food Facts. Kalorier och näringsämnen räknas ihop åt dig. Eller fotografera tallriken och låt Claude AI känna igen maten, eller spara hela tallriken som ett nytt livsmedel (<a href="#photo-meal">kräver en egen nyckel</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -525,10 +525,12 @@
           <p>Skärmbilderna visar appen på engelska.</p>
         </details>
         <details id="photo-meal">
-          <summary>Hur fungerar ”Måltid från foto”?</summary>
-          <p>Bodyscope kan känna igen maten på din tallrik från ett foto, med Claude, AI:n från Anthropic. Det är valfritt och kräver en egen API-nyckel från Anthropic.</p>
+          <summary>Hur fungerar ”Måltid från foto” och ”Nytt livsmedel från foto”?</summary>
+          <p>Bodyscope kan känna igen maten på din tallrik från ett foto, med Claude, AI:n från Anthropic. Det är valfritt och kräver en egen API-nyckel från Anthropic. Den kan lägga till maten den känner igen i en måltid, eller spara hela tallriken som ett nytt livsmedel i din livsmedelsfil.</p>
           <h3>Så använder du det</h3>
-          <ol><li>I <em>Dagens måltider</em> trycker du på knappen nere till höger och väljer <em>Lägg till måltidsdetaljer</em>.</li><li>Tryck på kameraknappen (<em>Måltid från foto</em>) och välj <em>Ta ett foto</em> eller <em>Välj från galleriet</em>.</li><li>Claude listar maten den ser, med uppskattad vikt och kalorier. Avmarkera det som är fel och tryck på <em>Lägg till i måltiden</em>.</li><li>Tryck på ett livsmedel i måltiden för att rätta mängden och spara måltiden som vanligt.</li></ol>
+          <ol><li>I <em>Dagens måltider</em> trycker du på knappen nere till höger och väljer <em>Lägg till måltidsdetaljer</em>.</li><li>Tryck på knappen med + och kamera (<em>Måltid från foto</em>) och välj <em>Ta ett foto</em> eller <em>Välj från galleriet</em>.</li><li>Claude listar maten den ser, med uppskattad vikt och kalorier. Avmarkera det som är fel och tryck på <em>Lägg till i måltiden</em>.</li><li>Tryck på ett livsmedel i måltiden för att rätta mängden och spara måltiden som vanligt.</li></ol>
+          <h3>Spara en tallrik som nytt livsmedel</h3>
+          <ol><li>Öppna menyn (☰), gå till <em>Filhantering › Livsmedel</em>, tryck på kameraknappen bredvid sökningen (<em>Nytt livsmedel från foto</em>) och ta eller välj ett foto.</li><li>Avmarkera det som är fel och tryck på <em>Fortsätt</em>.</li><li>Välj <em>En portion</em> (hela tallriken, till exempel cirka 700 g) eller <em>Per 100 g</em>.</li><li>Kontrollera namn, mängd, enhet och värden och tryck på <em>Godkänn</em>. När du ändrar mängden ändras värdena proportionellt; avmarkera <em>Ändra värdena proportionellt</em> om du bara vill ändra mängden.</li><li>Tallriken är nu ett livsmedel som alla andra: lägg till den i dina måltider utan nytt foto och utan ny kostnad.</li></ol>
           <h3>Skaffa en nyckel</h3>
           <ol><li>Skapa ett konto på <a href="https://console.anthropic.com">console.anthropic.com</a> och köp lite kredit.</li><li>Skapa en API-nyckel och kopiera den.</li><li>Öppna menyn (☰) i Bodyscope, gå till <em>Inställningar › Livsmedelsinställningar</em>, tryck på <em>Din Claude-API-nyckel</em> och klistra in den.</li></ol>
           <h3>Kostnad och integritet</h3>

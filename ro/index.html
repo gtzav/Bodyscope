@@ -362,7 +362,7 @@
         <div class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2"/><path d="M16 5l-1 2"/></svg></div>
           <h3>Mese și alimente</h3>
-          <p>Alcătuiește-ți mesele dintr-o listă inițială de circa 900 de alimente sau caută în bazele de date USDA și Open Food Facts. Caloriile și nutrienții se adună pentru tine. Sau fotografiază-ți farfuria și lasă Claude AI să recunoască alimentele (<a href="#photo-meal">e nevoie de propria ta cheie</a>).</p>
+          <p>Alcătuiește-ți mesele dintr-o listă inițială de circa 900 de alimente sau caută în bazele de date USDA și Open Food Facts. Caloriile și nutrienții se adună pentru tine. Sau fotografiază-ți farfuria și lasă Claude AI să recunoască alimentele sau salvează întreaga farfurie ca aliment nou (<a href="#photo-meal">e nevoie de propria ta cheie</a>).</p>
         </div>
         <div class="card">
           <div class="icon v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-2 0-3-1.5-3-3.5S6 13 6 11s1-4 3-4 2.5 2 2.5 4-1 3.5-1 5.5S10 20 8 20z"/><path d="M16 15c-1.6 0-2.5-1.2-2.5-2.8s.8-2.7.8-4.2S15 5 16.5 5 19 6.5 19 8s-.8 2.8-.8 4.3S17.6 15 16 15z"/></svg></div>
@@ -525,10 +525,12 @@
           <p>Capturile de ecran arată aplicația în engleză.</p>
         </details>
         <details id="photo-meal">
-          <summary>Cum funcționează „Masă din fotografie”?</summary>
-          <p>Bodyscope poate recunoaște alimentele din farfuria dvs. dintr-o fotografie, cu Claude, inteligența artificială a Anthropic. Este opțional și necesită propria dvs. cheie API Anthropic.</p>
+          <summary>Cum funcționează „Masă din fotografie” și „Aliment nou din fotografie”?</summary>
+          <p>Bodyscope poate recunoaște alimentele din farfuria dvs. dintr-o fotografie, cu Claude, inteligența artificială a Anthropic. Este opțional și necesită propria dvs. cheie API Anthropic. Poate adăuga alimentele recunoscute la o masă sau poate salva întreaga farfurie ca un singur aliment nou în fișierul dvs. de alimente.</p>
           <h3>Cum se folosește</h3>
-          <ol><li>În <em>Mesele zilei</em>, atingeți butonul din dreapta jos și alegeți <em>Adăugați detaliile mesei</em>.</li><li>Atingeți butonul camerei (<em>Masă din fotografie</em>) și alegeți <em>Faceți o fotografie</em> sau <em>Alegeți din galerie</em>.</li><li>Claude listează alimentele pe care le vede, cu greutatea și caloriile estimate. Debifați ce este greșit și atingeți <em>Adăugare la masă</em>.</li><li>Atingeți un aliment din masă pentru a-i corecta cantitatea, apoi salvați masa ca de obicei.</li></ol>
+          <ol><li>În <em>Mesele zilei</em>, atingeți butonul din dreapta jos și alegeți <em>Adăugați detaliile mesei</em>.</li><li>Atingeți butonul cu + și cameră (<em>Masă din fotografie</em>) și alegeți <em>Faceți o fotografie</em> sau <em>Alegeți din galerie</em>.</li><li>Claude listează alimentele pe care le vede, cu greutatea și caloriile estimate. Debifați ce este greșit și atingeți <em>Adăugare la masă</em>.</li><li>Atingeți un aliment din masă pentru a-i corecta cantitatea, apoi salvați masa ca de obicei.</li></ol>
+          <h3>Salvarea unei farfurii ca aliment nou</h3>
+          <ol><li>Deschideți meniul (☰), mergeți la <em>Administrarea fișierelor › Alimente</em>, atingeți butonul camerei de lângă căutare (<em>Aliment nou din fotografie</em>) și faceți sau alegeți o fotografie.</li><li>Debifați ce este greșit și atingeți <em>Continuare</em>.</li><li>Alegeți <em>O porție</em> (întreaga farfurie, de exemplu circa 700 g) sau <em>La 100 g</em>.</li><li>Verificați numele, cantitatea, unitatea și valorile, apoi atingeți <em>Acceptați</em>. Dacă schimbați cantitatea, valorile se schimbă proporțional; debifați <em>Modificare proporțională a valorilor</em> ca să schimbați doar cantitatea.</li><li>Farfuria este acum un aliment ca oricare altul: adăugați-o la mese fără o fotografie nouă și fără un cost nou.</li></ol>
           <h3>Cum obțineți o cheie</h3>
           <ol><li>Creați un cont pe <a href="https://console.anthropic.com">console.anthropic.com</a> și cumpărați puțin credit.</li><li>Creați o cheie API și copiați-o.</li><li>În Bodyscope deschideți meniul (☰), mergeți la <em>Setări › Reglaje pentru alimente</em>, atingeți <em>Cheia dvs. pentru API-ul Claude</em> și lipiți-o.</li></ol>
           <h3>Cost și confidențialitate</h3>
