@@ -179,6 +179,22 @@
   .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
 
+  /* Screenshots strip (in the hero, under the text and the day card) */
+  .hero .wrap.gallery-wrap { display: block; margin-top: 48px; }
+  .gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+  .gallery-head p { margin: 0; font-size: 15px; font-weight: 650; color: var(--muted); }
+  .gallery-nav { display: none; gap: 8px; }
+  @media (min-width: 720px) { .gallery-nav { display: flex; } }
+  .gallery-nav button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+                        background: var(--surface); color: var(--text); font-size: 18px; line-height: 1; cursor: pointer; }
+  .gallery { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+             overscroll-behavior-x: contain; padding: 4px 2px 16px; margin: 0; list-style: none; }
+  .gallery li { flex: none; width: 196px; scroll-snap-align: start; }
+  @media (min-width: 900px) { .gallery li { width: 216px; } }
+  .gallery img { display: block; width: 100%; height: auto; border-radius: 16px;
+                 border: 1px solid var(--line); background: var(--surface); }
+  .gallery span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+
   /* Day card (illustration) */
   .day {
     background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
@@ -352,6 +368,29 @@
           <div>Keho levossa (perusaineenvaihdunta)<b>1 520 kcal</b></div>
         </div>
       </div>
+    </div>
+    <div class="wrap gallery-wrap">
+      <div class="gallery-head">
+        <p id="gallery-title">Kurkistus sisään</p>
+        <div class="gallery-nav">
+          <button type="button" data-dir="-1" aria-label="Edelliset kuvat">&#8249;</button>
+          <button type="button" data-dir="1" aria-label="Seuraavat kuvat">&#8250;</button>
+        </div>
+      </div>
+      <ul class="gallery" aria-labelledby="gallery-title" tabindex="0">
+        <li><img src="../img/shot-dashboard.webp" width="432" height="862" loading="lazy" alt="Päivän summat: ruoka vasemmalla, liikunta oikealla"><span>Päivän summat: ruoka vasemmalla, liikunta oikealla</span></li>
+        <li><img src="../img/shot-weekly.webp" width="432" height="862" loading="lazy" alt="Viikon summat ja jokaisen päivän tase"><span>Viikon summat ja jokaisen päivän tase</span></li>
+        <li><img src="../img/shot-day-meals.webp" width="432" height="862" loading="lazy" alt="Päivän ateriat ravintoaineineen ja kcal-määrineen"><span>Päivän ateriat ravintoaineineen ja kcal-määrineen</span></li>
+        <li><img src="../img/shot-meal-expanded.webp" width="432" height="862" loading="lazy" alt="Aterian jokainen ruoka-aine tarkasti"><span>Aterian jokainen ruoka-aine tarkasti</span></li>
+        <li><img src="../img/shot-compose-meal.webp" width="432" height="862" loading="lazy" alt="Kokoa ateria ruoka-aineista"><span>Kokoa ateria ruoka-aineista</span></li>
+        <li><img src="../img/shot-food-list.webp" width="432" height="862" loading="lazy" alt="Yli 1 200 ruoka-ainetta luokittain"><span>Yli 1 200 ruoka-ainetta luokittain</span></li>
+        <li><img src="../img/shot-walks.webp" width="432" height="862" loading="lazy" alt="Kävelysi: vauhti, askeleet ja kcal"><span>Kävelysi: vauhti, askeleet ja kcal</span></li>
+        <li><img src="../img/shot-walk-map.webp" width="432" height="862" loading="lazy" alt="Jokaisen kävelyn reitti kartalla"><span>Jokaisen kävelyn reitti kartalla</span></li>
+        <li><img src="../img/shot-other-activities.webp" width="432" height="862" loading="lazy" alt="Uinti, pyöräily, jooga ja muuta"><span>Uinti, pyöräily, jooga ja muuta</span></li>
+        <li><img src="../img/shot-energy-balance.webp" width="432" height="862" loading="lazy" alt="Syödyt (punainen) vastaan kulutetut (vihreä), päivä päivältä"><span>Syödyt (punainen) vastaan kulutetut (vihreä), päivä päivältä</span></li>
+        <li><img src="../img/shot-weight.webp" width="432" height="862" loading="lazy" alt="Paino, sen 7 päivän keskiarvo ja tavoitteesi"><span>Paino, sen 7 päivän keskiarvo ja tavoitteesi</span></li>
+        <li><img src="../img/shot-week-pattern.webp" width="432" height="862" loading="lazy" alt="Viikkosi kuvio: askeleet, syödyt kcal tai tase"><span>Viikkosi kuvio: askeleet, syödyt kcal tai tase</span></li>
+      </ul>
     </div>
   </section>
 
@@ -580,6 +619,15 @@
   }
   openHashed();
   window.addEventListener('hashchange', openHashed);
+  /* The screenshots' arrows scroll the strip by about two pictures */
+  document.querySelectorAll('.gallery-nav button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = document.querySelector('.gallery'), li = g.querySelector('li');
+      var step = (li.offsetWidth + 16) * 2 * Number(b.dataset.dir);
+      if (getComputedStyle(document.documentElement).direction === 'rtl') step = -step;
+      g.scrollBy({ left: step, behavior: 'smooth' });
+    });
+  });
 </script>
 <script>
 function bsLang(c) {

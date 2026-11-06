@@ -198,6 +198,22 @@
   .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
 
+  /* Screenshots strip (in the hero, under the text and the day card) */
+  .hero .wrap.gallery-wrap { display: block; margin-top: 48px; }
+  .gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+  .gallery-head p { margin: 0; font-size: 15px; font-weight: 650; color: var(--muted); }
+  .gallery-nav { display: none; gap: 8px; }
+  @media (min-width: 720px) { .gallery-nav { display: flex; } }
+  .gallery-nav button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+                        background: var(--surface); color: var(--text); font-size: 18px; line-height: 1; cursor: pointer; }
+  .gallery { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+             overscroll-behavior-x: contain; padding: 4px 2px 16px; margin: 0; list-style: none; }
+  .gallery li { flex: none; width: 196px; scroll-snap-align: start; }
+  @media (min-width: 900px) { .gallery li { width: 216px; } }
+  .gallery img { display: block; width: 100%; height: auto; border-radius: 16px;
+                 border: 1px solid var(--line); background: var(--surface); }
+  .gallery span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+
   /* Day card (illustration) */
   .day {
     background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
@@ -373,6 +389,29 @@
           <div>Body at rest (basal)<b>1,520 kcal</b></div>
         </div>
       </div>
+    </div>
+    <div class="wrap gallery-wrap">
+      <div class="gallery-head">
+        <p id="gallery-title">A look inside</p>
+        <div class="gallery-nav">
+          <button type="button" data-dir="-1" aria-label="Previous screenshots">&#8249;</button>
+          <button type="button" data-dir="1" aria-label="Next screenshots">&#8250;</button>
+        </div>
+      </div>
+      <ul class="gallery" aria-labelledby="gallery-title" tabindex="0">
+        <li><img src="img/shot-dashboard.webp" width="432" height="862" loading="lazy" alt="Daily totals: food on the left, activity on the right"><span>Daily totals: food on the left, activity on the right</span></li>
+        <li><img src="img/shot-weekly.webp" width="432" height="862" loading="lazy" alt="Weekly totals and each day's balance"><span>Weekly totals and each day's balance</span></li>
+        <li><img src="img/shot-day-meals.webp" width="432" height="862" loading="lazy" alt="The day's meals, with nutrients and kcal"><span>The day's meals, with nutrients and kcal</span></li>
+        <li><img src="img/shot-meal-expanded.webp" width="432" height="862" loading="lazy" alt="Every food of a meal, in detail"><span>Every food of a meal, in detail</span></li>
+        <li><img src="img/shot-compose-meal.webp" width="432" height="862" loading="lazy" alt="Compose a meal from foods"><span>Compose a meal from foods</span></li>
+        <li><img src="img/shot-food-list.webp" width="432" height="862" loading="lazy" alt="Over 1,200 foods, by category"><span>Over 1,200 foods, by category</span></li>
+        <li><img src="img/shot-walks.webp" width="432" height="862" loading="lazy" alt="Your walks, with pace, steps and kcal"><span>Your walks, with pace, steps and kcal</span></li>
+        <li><img src="img/shot-walk-map.webp" width="432" height="862" loading="lazy" alt="Each walk's route on the map"><span>Each walk's route on the map</span></li>
+        <li><img src="img/shot-other-activities.webp" width="432" height="862" loading="lazy" alt="Swimming, cycling, yoga and more"><span>Swimming, cycling, yoga and more</span></li>
+        <li><img src="img/shot-energy-balance.webp" width="432" height="862" loading="lazy" alt="Eaten (red) against burned (green), day by day"><span>Eaten (red) against burned (green), day by day</span></li>
+        <li><img src="img/shot-weight.webp" width="432" height="862" loading="lazy" alt="Weight, its 7-day average and your goal"><span>Weight, its 7-day average and your goal</span></li>
+        <li><img src="img/shot-week-pattern.webp" width="432" height="862" loading="lazy" alt="Your week's pattern: steps, eaten kcal or balance"><span>Your week's pattern: steps, eaten kcal or balance</span></li>
+      </ul>
     </div>
   </section>
 
@@ -603,6 +642,15 @@
   }
   openHashed();
   window.addEventListener('hashchange', openHashed);
+  /* The screenshots' arrows scroll the strip by about two pictures */
+  document.querySelectorAll('.gallery-nav button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = document.querySelector('.gallery'), li = g.querySelector('li');
+      var step = (li.offsetWidth + 16) * 2 * Number(b.dataset.dir);
+      if (getComputedStyle(document.documentElement).direction === 'rtl') step = -step;
+      g.scrollBy({ left: step, behavior: 'smooth' });
+    });
+  });
 </script>
 <script>
 function bsLang(c) {

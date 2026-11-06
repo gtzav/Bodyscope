@@ -179,6 +179,22 @@
   .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
 
+  /* Screenshots strip (in the hero, under the text and the day card) */
+  .hero .wrap.gallery-wrap { display: block; margin-top: 48px; }
+  .gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+  .gallery-head p { margin: 0; font-size: 15px; font-weight: 650; color: var(--muted); }
+  .gallery-nav { display: none; gap: 8px; }
+  @media (min-width: 720px) { .gallery-nav { display: flex; } }
+  .gallery-nav button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+                        background: var(--surface); color: var(--text); font-size: 18px; line-height: 1; cursor: pointer; }
+  .gallery { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+             overscroll-behavior-x: contain; padding: 4px 2px 16px; margin: 0; list-style: none; }
+  .gallery li { flex: none; width: 196px; scroll-snap-align: start; }
+  @media (min-width: 900px) { .gallery li { width: 216px; } }
+  .gallery img { display: block; width: 100%; height: auto; border-radius: 16px;
+                 border: 1px solid var(--line); background: var(--surface); }
+  .gallery span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+
   /* Day card (illustration) */
   .day {
     background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
@@ -352,6 +368,29 @@
           <div>Corpo a riposo (basale)<b>1.520 kcal</b></div>
         </div>
       </div>
+    </div>
+    <div class="wrap gallery-wrap">
+      <div class="gallery-head">
+        <p id="gallery-title">Uno sguardo all'interno</p>
+        <div class="gallery-nav">
+          <button type="button" data-dir="-1" aria-label="Schermate precedenti">&#8249;</button>
+          <button type="button" data-dir="1" aria-label="Schermate successive">&#8250;</button>
+        </div>
+      </div>
+      <ul class="gallery" aria-labelledby="gallery-title" tabindex="0">
+        <li><img src="../img/shot-dashboard.webp" width="432" height="862" loading="lazy" alt="Totali del giorno: alimentazione a sinistra, attività a destra"><span>Totali del giorno: alimentazione a sinistra, attività a destra</span></li>
+        <li><img src="../img/shot-weekly.webp" width="432" height="862" loading="lazy" alt="Totali della settimana e il bilancio di ogni giorno"><span>Totali della settimana e il bilancio di ogni giorno</span></li>
+        <li><img src="../img/shot-day-meals.webp" width="432" height="862" loading="lazy" alt="I pasti del giorno, con nutrienti e kcal"><span>I pasti del giorno, con nutrienti e kcal</span></li>
+        <li><img src="../img/shot-meal-expanded.webp" width="432" height="862" loading="lazy" alt="Ogni alimento di un pasto, in dettaglio"><span>Ogni alimento di un pasto, in dettaglio</span></li>
+        <li><img src="../img/shot-compose-meal.webp" width="432" height="862" loading="lazy" alt="Comporre un pasto con gli alimenti"><span>Comporre un pasto con gli alimenti</span></li>
+        <li><img src="../img/shot-food-list.webp" width="432" height="862" loading="lazy" alt="Oltre 1.200 alimenti, per categoria"><span>Oltre 1.200 alimenti, per categoria</span></li>
+        <li><img src="../img/shot-walks.webp" width="432" height="862" loading="lazy" alt="Le tue camminate, con passo, passi e kcal"><span>Le tue camminate, con passo, passi e kcal</span></li>
+        <li><img src="../img/shot-walk-map.webp" width="432" height="862" loading="lazy" alt="Il percorso di ogni camminata sulla mappa"><span>Il percorso di ogni camminata sulla mappa</span></li>
+        <li><img src="../img/shot-other-activities.webp" width="432" height="862" loading="lazy" alt="Nuoto, ciclismo, yoga e altro"><span>Nuoto, ciclismo, yoga e altro</span></li>
+        <li><img src="../img/shot-energy-balance.webp" width="432" height="862" loading="lazy" alt="Mangiato (rosso) contro bruciato (verde), giorno per giorno"><span>Mangiato (rosso) contro bruciato (verde), giorno per giorno</span></li>
+        <li><img src="../img/shot-weight.webp" width="432" height="862" loading="lazy" alt="Il peso, la media di 7 giorni e il tuo obiettivo"><span>Il peso, la media di 7 giorni e il tuo obiettivo</span></li>
+        <li><img src="../img/shot-week-pattern.webp" width="432" height="862" loading="lazy" alt="Lo schema della tua settimana: passi, kcal mangiate o bilancio"><span>Lo schema della tua settimana: passi, kcal mangiate o bilancio</span></li>
+      </ul>
     </div>
   </section>
 
@@ -580,6 +619,15 @@
   }
   openHashed();
   window.addEventListener('hashchange', openHashed);
+  /* The screenshots' arrows scroll the strip by about two pictures */
+  document.querySelectorAll('.gallery-nav button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = document.querySelector('.gallery'), li = g.querySelector('li');
+      var step = (li.offsetWidth + 16) * 2 * Number(b.dataset.dir);
+      if (getComputedStyle(document.documentElement).direction === 'rtl') step = -step;
+      g.scrollBy({ left: step, behavior: 'smooth' });
+    });
+  });
 </script>
 <script>
 function bsLang(c) {

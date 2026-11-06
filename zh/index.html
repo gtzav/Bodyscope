@@ -179,6 +179,22 @@
   .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
 
+  /* Screenshots strip (in the hero, under the text and the day card) */
+  .hero .wrap.gallery-wrap { display: block; margin-top: 48px; }
+  .gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+  .gallery-head p { margin: 0; font-size: 15px; font-weight: 650; color: var(--muted); }
+  .gallery-nav { display: none; gap: 8px; }
+  @media (min-width: 720px) { .gallery-nav { display: flex; } }
+  .gallery-nav button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+                        background: var(--surface); color: var(--text); font-size: 18px; line-height: 1; cursor: pointer; }
+  .gallery { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+             overscroll-behavior-x: contain; padding: 4px 2px 16px; margin: 0; list-style: none; }
+  .gallery li { flex: none; width: 196px; scroll-snap-align: start; }
+  @media (min-width: 900px) { .gallery li { width: 216px; } }
+  .gallery img { display: block; width: 100%; height: auto; border-radius: 16px;
+                 border: 1px solid var(--line); background: var(--surface); }
+  .gallery span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+
   /* Day card (illustration) */
   .day {
     background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
@@ -352,6 +368,29 @@
           <div>静息时的身体（基础代谢）<b>1,520 千卡</b></div>
         </div>
       </div>
+    </div>
+    <div class="wrap gallery-wrap">
+      <div class="gallery-head">
+        <p id="gallery-title">看看应用内部</p>
+        <div class="gallery-nav">
+          <button type="button" data-dir="-1" aria-label="上一组截图">&#8249;</button>
+          <button type="button" data-dir="1" aria-label="下一组截图">&#8250;</button>
+        </div>
+      </div>
+      <ul class="gallery" aria-labelledby="gallery-title" tabindex="0">
+        <li><img src="../img/shot-dashboard.webp" width="432" height="862" loading="lazy" alt="每日合计：左边是饮食，右边是活动"><span>每日合计：左边是饮食，右边是活动</span></li>
+        <li><img src="../img/shot-weekly.webp" width="432" height="862" loading="lazy" alt="每周合计和每天的平衡"><span>每周合计和每天的平衡</span></li>
+        <li><img src="../img/shot-day-meals.webp" width="432" height="862" loading="lazy" alt="当天的餐食，含营养素和千卡"><span>当天的餐食，含营养素和千卡</span></li>
+        <li><img src="../img/shot-meal-expanded.webp" width="432" height="862" loading="lazy" alt="一餐中每种食物的详情"><span>一餐中每种食物的详情</span></li>
+        <li><img src="../img/shot-compose-meal.webp" width="432" height="862" loading="lazy" alt="用食物组合一餐"><span>用食物组合一餐</span></li>
+        <li><img src="../img/shot-food-list.webp" width="432" height="862" loading="lazy" alt="1200 多种食物，按类别排列"><span>1200 多种食物，按类别排列</span></li>
+        <li><img src="../img/shot-walks.webp" width="432" height="862" loading="lazy" alt="你的步行：配速、步数和千卡"><span>你的步行：配速、步数和千卡</span></li>
+        <li><img src="../img/shot-walk-map.webp" width="432" height="862" loading="lazy" alt="每次步行的路线地图"><span>每次步行的路线地图</span></li>
+        <li><img src="../img/shot-other-activities.webp" width="432" height="862" loading="lazy" alt="游泳、骑行、瑜伽等"><span>游泳、骑行、瑜伽等</span></li>
+        <li><img src="../img/shot-energy-balance.webp" width="432" height="862" loading="lazy" alt="摄入（红）对比消耗（绿），逐日显示"><span>摄入（红）对比消耗（绿），逐日显示</span></li>
+        <li><img src="../img/shot-weight.webp" width="432" height="862" loading="lazy" alt="体重、7 日平均值和你的目标"><span>体重、7 日平均值和你的目标</span></li>
+        <li><img src="../img/shot-week-pattern.webp" width="432" height="862" loading="lazy" alt="你一周的规律：步数、摄入千卡或平衡"><span>你一周的规律：步数、摄入千卡或平衡</span></li>
+      </ul>
     </div>
   </section>
 
@@ -580,6 +619,15 @@
   }
   openHashed();
   window.addEventListener('hashchange', openHashed);
+  /* The screenshots' arrows scroll the strip by about two pictures */
+  document.querySelectorAll('.gallery-nav button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = document.querySelector('.gallery'), li = g.querySelector('li');
+      var step = (li.offsetWidth + 16) * 2 * Number(b.dataset.dir);
+      if (getComputedStyle(document.documentElement).direction === 'rtl') step = -step;
+      g.scrollBy({ left: step, behavior: 'smooth' });
+    });
+  });
 </script>
 <script>
 function bsLang(c) {

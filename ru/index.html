@@ -179,6 +179,22 @@
   .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .fine { margin-top: 16px; font-size: 14px; color: var(--muted); }
 
+  /* Screenshots strip (in the hero, under the text and the day card) */
+  .hero .wrap.gallery-wrap { display: block; margin-top: 48px; }
+  .gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+  .gallery-head p { margin: 0; font-size: 15px; font-weight: 650; color: var(--muted); }
+  .gallery-nav { display: none; gap: 8px; }
+  @media (min-width: 720px) { .gallery-nav { display: flex; } }
+  .gallery-nav button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+                        background: var(--surface); color: var(--text); font-size: 18px; line-height: 1; cursor: pointer; }
+  .gallery { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+             overscroll-behavior-x: contain; padding: 4px 2px 16px; margin: 0; list-style: none; }
+  .gallery li { flex: none; width: 196px; scroll-snap-align: start; }
+  @media (min-width: 900px) { .gallery li { width: 216px; } }
+  .gallery img { display: block; width: 100%; height: auto; border-radius: 16px;
+                 border: 1px solid var(--line); background: var(--surface); }
+  .gallery span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+
   /* Day card (illustration) */
   .day {
     background: var(--surface); border: 1px solid var(--line); border-radius: 26px;
@@ -352,6 +368,29 @@
           <div>Тело в покое (базовый обмен)<b>1 520 ккал</b></div>
         </div>
       </div>
+    </div>
+    <div class="wrap gallery-wrap">
+      <div class="gallery-head">
+        <p id="gallery-title">Взгляд изнутри</p>
+        <div class="gallery-nav">
+          <button type="button" data-dir="-1" aria-label="Предыдущие снимки">&#8249;</button>
+          <button type="button" data-dir="1" aria-label="Следующие снимки">&#8250;</button>
+        </div>
+      </div>
+      <ul class="gallery" aria-labelledby="gallery-title" tabindex="0">
+        <li><img src="../img/shot-dashboard.webp" width="432" height="862" loading="lazy" alt="Итоги дня: питание слева, активность справа"><span>Итоги дня: питание слева, активность справа</span></li>
+        <li><img src="../img/shot-weekly.webp" width="432" height="862" loading="lazy" alt="Итоги недели и баланс каждого дня"><span>Итоги недели и баланс каждого дня</span></li>
+        <li><img src="../img/shot-day-meals.webp" width="432" height="862" loading="lazy" alt="Приёмы пищи за день, с нутриентами и ккал"><span>Приёмы пищи за день, с нутриентами и ккал</span></li>
+        <li><img src="../img/shot-meal-expanded.webp" width="432" height="862" loading="lazy" alt="Каждый продукт приёма пищи подробно"><span>Каждый продукт приёма пищи подробно</span></li>
+        <li><img src="../img/shot-compose-meal.webp" width="432" height="862" loading="lazy" alt="Составление блюда из продуктов"><span>Составление блюда из продуктов</span></li>
+        <li><img src="../img/shot-food-list.webp" width="432" height="862" loading="lazy" alt="Более 1200 продуктов по категориям"><span>Более 1200 продуктов по категориям</span></li>
+        <li><img src="../img/shot-walks.webp" width="432" height="862" loading="lazy" alt="Ваши прогулки: темп, шаги и ккал"><span>Ваши прогулки: темп, шаги и ккал</span></li>
+        <li><img src="../img/shot-walk-map.webp" width="432" height="862" loading="lazy" alt="Маршрут каждой прогулки на карте"><span>Маршрут каждой прогулки на карте</span></li>
+        <li><img src="../img/shot-other-activities.webp" width="432" height="862" loading="lazy" alt="Плавание, велосипед, йога и многое другое"><span>Плавание, велосипед, йога и многое другое</span></li>
+        <li><img src="../img/shot-energy-balance.webp" width="432" height="862" loading="lazy" alt="Съедено (красный) против сожжённого (зелёный), день за днём"><span>Съедено (красный) против сожжённого (зелёный), день за днём</span></li>
+        <li><img src="../img/shot-weight.webp" width="432" height="862" loading="lazy" alt="Вес, его среднее за 7 дней и ваша цель"><span>Вес, его среднее за 7 дней и ваша цель</span></li>
+        <li><img src="../img/shot-week-pattern.webp" width="432" height="862" loading="lazy" alt="Картина вашей недели: шаги, съеденные ккал или баланс"><span>Картина вашей недели: шаги, съеденные ккал или баланс</span></li>
+      </ul>
     </div>
   </section>
 
@@ -580,6 +619,15 @@
   }
   openHashed();
   window.addEventListener('hashchange', openHashed);
+  /* The screenshots' arrows scroll the strip by about two pictures */
+  document.querySelectorAll('.gallery-nav button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = document.querySelector('.gallery'), li = g.querySelector('li');
+      var step = (li.offsetWidth + 16) * 2 * Number(b.dataset.dir);
+      if (getComputedStyle(document.documentElement).direction === 'rtl') step = -step;
+      g.scrollBy({ left: step, behavior: 'smooth' });
+    });
+  });
 </script>
 <script>
 function bsLang(c) {
